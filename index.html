@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es" data-tema="rojo">
+<html lang="es" data-modo="oscuro">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,71 +7,72 @@
 <meta name="description" content="Sonetix diseña páginas web personalizadas para tu negocio y se encarga de mantenerlas: hosting, cambios, seguridad y soporte.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Playfair+Display:wght@500;600;700&family=Lora:wght@400;500;600&family=Poppins:wght@400;500;600;700&family=Nunito:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-/* Tema ROJO (por defecto) */
-:root,[data-tema="rojo"]{
-  --bg:#08060a; --bg2:#0f0a10; --card:#140e15; --bgrgb:8,6,10;
-  --a:#e11d48; --b:#ff7a45; --c:#ff2d75; --ar:225,29,72; --br:255,122,69;
-}
-/* Tema VIOLETA (el Webnova original) */
-[data-tema="violeta"]{
-  --bg:#06060c; --bg2:#0b0b16; --card:#10101d; --bgrgb:6,6,12;
-  --a:#7c5cff; --b:#22d3ee; --c:#ff4fd8; --ar:124,92,255; --br:34,211,238;
-}
 :root{
-  --line:rgba(255,255,255,.08);
-  --txt:#f2f2fa; --mut:#9a9ab5;
+  --a:#e11d2e; --b:#ff4d4d; --on:#fff;
+  --fh:'Space Grotesk',Inter,system-ui,sans-serif; --fb:Inter,system-ui,sans-serif;
+  --fs:1; --r:20px; --rb:999px;
   --grad:linear-gradient(120deg,var(--a),var(--b));
-  --r:20px;
+  --bg:color-mix(in srgb,var(--a) 2%,#050506);
+  --bg2:color-mix(in srgb,var(--a) 5%,#0a0a0c);
+  --card:color-mix(in srgb,var(--a) 4%,#111114);
+  --txt:#f4f2f7; --mut:#a8a2b6; --fgr:255,255,255; --line:rgba(var(--fgr),.09);
+}
+[data-modo="claro"]{
+  --bg:color-mix(in srgb,var(--a) 4%,#faf9fc);
+  --bg2:color-mix(in srgb,var(--a) 8%,#f1eff6);
+  --card:#ffffff;
+  --txt:#1a1722; --mut:#6a6479; --fgr:20,16,34; --line:rgba(var(--fgr),.11);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--txt);font-family:Inter,system-ui,sans-serif;line-height:1.6;overflow-x:hidden;transition:background .5s}
-h1,h2,h3,.logo{font-family:'Space Grotesk',Inter,sans-serif;line-height:1.1;letter-spacing:-.02em}
+html{scroll-behavior:smooth;font-size:calc(16px*var(--fs))}
+body{background:var(--bg);color:var(--txt);font-family:var(--fb);line-height:1.6;overflow-x:hidden;transition:background .5s,color .3s}
+h1,h2,h3,.logo{font-family:var(--fh);line-height:1.1;letter-spacing:-.02em}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
 section{padding:110px 0;position:relative}
 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.tag{display:inline-block;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--b);margin-bottom:14px;font-weight:600}
+.tag{display:inline-block;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--b);margin-bottom:14px;font-weight:700}
 h2{font-size:clamp(2rem,4.5vw,3.2rem);margin-bottom:16px}
 .lead{color:var(--mut);max-width:620px;font-size:1.08rem}
 .center{text-align:center}.center .lead{margin:0 auto}
 
-/* cursor glow + progress */
 #glow{position:fixed;width:520px;height:520px;border-radius:50%;pointer-events:none;z-index:0;
-  background:radial-gradient(circle,rgba(var(--ar),.16),transparent 62%);transform:translate(-50%,-50%);left:50%;top:30%}
+  background:radial-gradient(circle,color-mix(in srgb,var(--a) 20%,transparent),transparent 62%);transform:translate(-50%,-50%);left:50%;top:30%}
 #bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:100}
 
-/* nav */
 nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:.3s}
-nav.sc{background:rgba(var(--bgrgb),.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+nav.sc{background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
 .logo{font-size:1.4rem;font-weight:700;display:flex;align-items:center;gap:10px}
 .logo i{display:flex;gap:2px;align-items:center;height:22px}
 .logo i b{display:block;width:3px;border-radius:2px;background:var(--grad);animation:eq 1.1s ease-in-out infinite}
 .logo i b:nth-child(1){height:10px}.logo i b:nth-child(2){height:20px;animation-delay:.15s}
 .logo i b:nth-child(3){height:14px;animation-delay:.3s}.logo i b:nth-child(4){height:18px;animation-delay:.45s}
 @keyframes eq{50%{transform:scaleY(.35)}}
-.links{display:flex;gap:30px;align-items:center;font-size:.95rem;color:var(--mut)}
+.links{display:flex;gap:24px;align-items:center;font-size:.93rem;color:var(--mut)}
 .links a:hover{color:var(--txt)}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;font-weight:600;border:0;cursor:pointer;
-  font-size:1rem;font-family:inherit;transition:transform .2s,box-shadow .2s;position:relative}
-.btn.p{background:var(--grad);color:#fff;box-shadow:0 8px 30px -8px rgba(var(--ar),.7)}
-.btn.p:hover{box-shadow:0 12px 40px -6px rgba(var(--br),.6)}
-.btn.g{background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--txt)}
-.btn.g:hover{background:rgba(255,255,255,.1)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:var(--rb);font-weight:600;border:0;cursor:pointer;
+  font-size:1rem;font-family:inherit;transition:transform .2s,box-shadow .2s,background .2s;position:relative;justify-content:center}
+.btn:active{transform:scale(.97)}
+.btn.p{background:var(--grad);color:var(--on);box-shadow:0 8px 30px -8px color-mix(in srgb,var(--a) 75%,transparent)}
+.btn.p:hover{box-shadow:0 12px 40px -6px color-mix(in srgb,var(--b) 65%,transparent)}
+.btn.g{background:rgba(var(--fgr),.06);border:1px solid var(--line);color:var(--txt)}
+.btn.g:hover{background:rgba(var(--fgr),.12)}
+.btn.sm{padding:10px 20px;font-size:.9rem}
 .burger{display:none;background:none;border:0;color:var(--txt);font-size:1.7rem;cursor:pointer}
-.tema{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--txt);border-radius:999px;padding:7px 14px 7px 8px;font:inherit;font-size:.82rem;font-weight:500;cursor:pointer}
-.tema i{width:20px;height:20px;border-radius:50%;background:var(--grad);box-shadow:0 0 12px rgba(var(--ar),.7)}
-.tema:hover{background:rgba(255,255,255,.1)}
+.sel{background:rgba(var(--fgr),.06);border:1px solid var(--line);color:var(--txt);border-radius:999px;padding:8px 12px;font:inherit;font-size:.85rem;cursor:pointer;outline:none}
+.sel option{background:var(--card);color:var(--txt)}
+.pbtn{display:inline-flex;align-items:center;gap:8px;background:rgba(var(--fgr),.06);border:1px solid var(--line);color:var(--txt);border-radius:999px;padding:8px 14px 8px 8px;font:inherit;font-size:.85rem;font-weight:600;cursor:pointer}
+.pbtn i{width:22px;height:22px;border-radius:50%;background:var(--grad);display:block}
+.pbtn:hover{background:rgba(var(--fgr),.12)}
 
-/* hero */
 #hero{min-height:100vh;display:flex;align-items:center;padding-top:110px;overflow:hidden}
 #net{position:absolute;inset:0;width:100%;height:100%;z-index:0}
 #hero .wrap{position:relative;z-index:2;text-align:center;width:100%;min-width:0}
 .pill{display:inline-flex;gap:10px;align-items:center;padding:8px 18px;border:1px solid var(--line);border-radius:999px;
-  background:rgba(255,255,255,.04);font-size:.88rem;color:var(--mut);margin-bottom:28px}
+  background:rgba(var(--fgr),.05);font-size:.88rem;color:var(--mut);margin-bottom:28px}
 .pill span{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 12px #34d399;animation:pl 1.6s infinite}
 @keyframes pl{50%{opacity:.35}}
 h1{font-size:clamp(2.6rem,7vw,5.4rem);margin-bottom:24px}
@@ -83,120 +84,178 @@ h1{font-size:clamp(2.6rem,7vw,5.4rem);margin-bottom:24px}
 .wave b{width:5px;border-radius:3px;background:var(--grad);height:12px;animation:wv 1.4s ease-in-out infinite;opacity:.85}
 @keyframes wv{50%{height:56px}}
 
-/* stats */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:-40px;position:relative;z-index:3}
 .stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px;text-align:center}
-.stat strong{font-family:'Space Grotesk';font-size:2.6rem;display:block}
+.stat strong{font-family:var(--fh);font-size:2.6rem;display:block}
 .stat span{color:var(--mut);font-size:.92rem}
 
-/* services */
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:34px;position:relative;overflow:hidden;
-  transition:transform .15s,border-color .3s;transform-style:preserve-3d;will-change:transform}
-.card::before{content:"";position:absolute;inset:0;background:radial-gradient(380px circle at var(--mx,50%) var(--my,0%),rgba(var(--ar),.22),transparent 60%);opacity:0;transition:.3s}
-.card:hover::before{opacity:1}.card:hover{border-color:rgba(var(--ar),.5)}
-.ico{width:54px;height:54px;border-radius:15px;background:var(--grad);display:grid;place-items:center;font-size:1.5rem;margin-bottom:22px;position:relative}
+  transition:transform .15s,border-color .3s,background .5s;transform-style:preserve-3d;will-change:transform}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(380px circle at var(--mx,50%) var(--my,0%),color-mix(in srgb,var(--a) 24%,transparent),transparent 60%);opacity:0;transition:.3s;pointer-events:none}
+.card:hover::before{opacity:1}.card:hover{border-color:color-mix(in srgb,var(--a) 55%,transparent)}
+.ico{width:54px;height:54px;border-radius:calc(var(--r)*.75);background:var(--grad);display:grid;place-items:center;font-size:1.5rem;margin-bottom:22px;position:relative}
 .card h3{font-size:1.35rem;margin-bottom:10px;position:relative}
 .card p{color:var(--mut);font-size:.98rem;position:relative}
 
-/* configurator */
 #demo{background:linear-gradient(180deg,var(--bg),var(--bg2),var(--bg))}
-.demo{display:grid;grid-template-columns:340px 1fr;gap:36px;margin-top:56px;align-items:start}
+.demo{display:grid;grid-template-columns:340px minmax(0,1fr);gap:36px;margin-top:40px;align-items:start}
 .opts{display:flex;flex-direction:column;gap:12px}
-.opt{display:flex;gap:14px;align-items:center;padding:16px 18px;border-radius:16px;background:var(--card);border:1px solid var(--line);
+.namebox{margin-bottom:6px}
+.namebox label{display:block;font-size:.8rem;font-weight:600;color:var(--mut);margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em}
+.inp{width:100%;background:rgba(var(--fgr),.05);border:1px solid var(--line);border-radius:calc(var(--r)*.6);padding:14px 16px;color:var(--txt);font:inherit;outline:none;transition:.25s}
+.inp:focus{border-color:var(--b);box-shadow:0 0 0 4px color-mix(in srgb,var(--b) 16%,transparent)}
+textarea.inp{min-height:100px;resize:vertical}
+select.inp option{background:var(--card);color:var(--txt)}
+.opt{display:flex;gap:14px;align-items:center;padding:14px 18px;border-radius:calc(var(--r)*.8);background:var(--card);border:1px solid var(--line);
   color:var(--txt);cursor:pointer;font:inherit;text-align:left;transition:.25s}
 .opt:hover{transform:translateX(6px)}
-.opt.on{border-color:var(--oc,var(--a));background:linear-gradient(90deg,color-mix(in srgb,var(--oc,var(--a)) 22%,var(--card)),var(--card))}
+.opt.on{border-color:var(--a);background:linear-gradient(90deg,color-mix(in srgb,var(--a) 20%,var(--card)),var(--card))}
 .opt em{font-style:normal;font-size:1.6rem}
 .opt small{display:block;color:var(--mut);font-size:.82rem}
-.browser{border-radius:18px;border:1px solid var(--line);background:var(--bg2);overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,0,0,.9),0 0 80px -30px var(--ac,var(--a));transition:box-shadow .5s}
+.quick{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:6px;font-size:.85rem;color:var(--mut)}
+.sw{width:30px;height:30px;border-radius:50%;border:2px solid transparent;cursor:pointer;background:linear-gradient(135deg,var(--s1),var(--s2));outline:2px solid transparent;outline-offset:2px;transition:transform .2s}
+.sw:hover{transform:scale(1.15)}
+.sw[aria-pressed="true"]{outline-color:var(--txt)}
+.browser{border-radius:calc(var(--r)*.9);border:1px solid var(--line);background:var(--bg2);overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,0,0,.6),0 0 80px -30px var(--a);transition:box-shadow .5s,background .5s}
 .bbar{display:flex;gap:8px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line);background:var(--card)}
-.bbar i{width:11px;height:11px;border-radius:50%;background:#3b3b52}
+.bbar i{width:11px;height:11px;border-radius:50%;background:rgba(var(--fgr),.2)}
 .bbar i:nth-child(1){background:#ff5f57}.bbar i:nth-child(2){background:#febc2e}.bbar i:nth-child(3){background:#28c840}
-.url{margin-left:14px;flex:1;background:var(--bg);border-radius:8px;padding:6px 14px;font-size:.8rem;color:var(--mut)}
-.site{padding:34px;min-height:430px;transition:.5s;background:var(--sbg,var(--bg2))}
-.s-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:46px;font-size:.85rem;color:var(--mut)}
-.s-nav b{color:var(--txt);font-family:'Space Grotesk';font-size:1.1rem}
+.url{margin-left:14px;flex:1;background:var(--bg);border-radius:8px;padding:6px 14px;font-size:.8rem;color:var(--mut);overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.site{padding:34px;min-height:430px}
+.s-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:46px;font-size:.85rem;color:var(--mut);gap:12px}
+.s-nav b{font-family:var(--fh);font-size:1.1rem;color:var(--a)}
 .s-nav span{display:flex;gap:18px}
 .s-hero{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center}
-.s-hero h4{font-family:'Space Grotesk';font-size:clamp(1.5rem,3vw,2.3rem);line-height:1.1;margin-bottom:12px;transition:.3s}
+.s-hero h4{font-family:var(--fh);font-size:clamp(1.5rem,3vw,2.3rem);line-height:1.1;margin-bottom:12px}
 .s-hero p{color:var(--mut);font-size:.92rem;margin-bottom:20px}
-.s-btn{display:inline-block;padding:11px 22px;border-radius:999px;background:var(--ac,var(--a));color:#fff;font-weight:600;font-size:.88rem;transition:.4s}
-.s-img{aspect-ratio:1;border-radius:22px;background:linear-gradient(135deg,var(--ac,var(--a)),transparent 85%);display:grid;place-items:center;font-size:5rem;transition:.5s;animation:flt 4s ease-in-out infinite}
+.s-btn{display:inline-block;padding:11px 22px;border-radius:var(--rb);background:var(--grad);color:var(--on);font-weight:600;font-size:.88rem}
+.s-img{aspect-ratio:1;border-radius:var(--r);background:linear-gradient(135deg,var(--a),transparent 85%);display:grid;place-items:center;font-size:5rem;animation:flt 4s ease-in-out infinite}
 @keyframes flt{50%{transform:translateY(-10px) rotate(2deg)}}
 .s-feat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px}
-.s-feat div{padding:14px;border-radius:12px;background:rgba(255,255,255,.04);font-size:.8rem;border:1px solid var(--line);text-align:center}
+.s-feat div{padding:14px;border-radius:calc(var(--r)*.6);background:rgba(var(--fgr),.05);font-size:.8rem;border:1px solid var(--line);text-align:center}
 .fade{animation:fd .5s}
 @keyframes fd{from{opacity:0;transform:translateY(8px)}}
 .note{text-align:center;margin-top:18px;color:var(--mut);font-size:.9rem}
 
-/* process */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:60px;position:relative}
 .steps::before{content:"";position:absolute;top:34px;left:8%;right:8%;height:2px;background:var(--line)}
 .steps::after{content:"";position:absolute;top:34px;left:8%;height:2px;width:var(--prog,0%);background:var(--grad);max-width:84%;transition:width .3s}
 .step{text-align:center;position:relative;z-index:1}
 .num{width:68px;height:68px;border-radius:50%;background:var(--bg);border:2px solid var(--line);display:grid;place-items:center;
-  margin:0 auto 20px;font-family:'Space Grotesk';font-size:1.4rem;font-weight:700;transition:.4s}
-.step.on .num{border-color:var(--b);box-shadow:0 0 28px rgba(var(--br),.5);color:var(--b)}
+  margin:0 auto 20px;font-family:var(--fh);font-size:1.4rem;font-weight:700;transition:.4s}
+.step.on .num{border-color:var(--b);box-shadow:0 0 28px color-mix(in srgb,var(--b) 55%,transparent);color:var(--b)}
 .step h3{font-size:1.15rem;margin-bottom:8px}.step p{color:var(--mut);font-size:.92rem}
 
-/* pricing */
-.toggle{display:inline-flex;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px;margin-top:30px;position:relative}
-.toggle button{background:none;border:0;color:var(--mut);padding:10px 24px;border-radius:999px;cursor:pointer;font:inherit;font-weight:600;position:relative;z-index:1;transition:.3s}
-.toggle button.on{color:#fff;background:var(--grad)}
-.toggle em{font-style:normal;font-size:.72rem;background:#34d399;color:#04140d;padding:2px 8px;border-radius:99px;margin-left:6px}
-.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:50px;align-items:stretch}
-.plan{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:36px;display:flex;flex-direction:column;position:relative;transition:transform .3s}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px;align-items:stretch}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:36px;display:flex;flex-direction:column;position:relative;transition:transform .3s,outline-color .3s,background .5s;outline:2px solid transparent;outline-offset:5px}
 .plan:hover{transform:translateY(-8px)}
-.plan.hot{border:1px solid transparent;background:linear-gradient(var(--card),var(--card)) padding-box,var(--grad) border-box;box-shadow:0 30px 80px -30px rgba(var(--ar),.6)}
-.plan .badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--grad);padding:4px 16px;border-radius:99px;font-size:.78rem;font-weight:700}
-.plan h3{font-size:1.4rem}.plan .d{color:var(--mut);font-size:.92rem;margin:6px 0 22px}
-.price{font-family:'Space Grotesk';font-size:2.6rem;font-weight:700}
-.price small{font-size:.95rem;font-weight:400;color:var(--mut)}
+.plan.rec{outline-color:var(--b)}
+.plan.hot{border:1px solid transparent;background:linear-gradient(var(--card),var(--card)) padding-box,var(--grad) border-box;box-shadow:0 30px 80px -30px color-mix(in srgb,var(--a) 65%,transparent)}
+.plan .badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--grad);color:var(--on);padding:4px 16px;border-radius:99px;font-size:.78rem;font-weight:700;white-space:nowrap}
+.plan .pe{font-size:2rem;margin-bottom:8px}
+.plan h3{font-size:1.5rem}.plan .d{color:var(--mut);font-size:.92rem;margin:6px 0 22px;min-height:2.9em}
+.price{font-family:var(--fh);font-size:3rem;font-weight:700;line-height:1}
+.price small{font-size:.9rem;font-weight:500;color:var(--mut);font-family:var(--fb)}
 .plan ul{list-style:none;margin:24px 0 30px;display:grid;gap:12px;font-size:.95rem;flex:1}
 .plan li::before{content:"✓";color:var(--b);font-weight:700;margin-right:10px}
-.plan .btn{justify-content:center}
-.fine{color:var(--mut);font-size:.82rem;margin-top:26px;text-align:center}
+.fine{color:var(--mut);font-size:.85rem;margin-top:26px;text-align:center}
 
-/* faq */
+.quiz{margin-top:56px;display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center}
+.quiz h3{font-size:1.6rem;margin-bottom:6px}
+.needs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.need{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:calc(var(--r)*.6);cursor:pointer;font-size:.92rem;background:rgba(var(--fgr),.03);transition:.2s;user-select:none}
+.need:hover{border-color:var(--b)}
+.need.on{border-color:var(--a);background:color-mix(in srgb,var(--a) 14%,transparent)}
+.need input{display:none}
+.need i{width:20px;height:20px;border-radius:6px;border:2px solid var(--mut);display:grid;place-items:center;flex-shrink:0;font-style:normal;font-size:.75rem;color:var(--on);transition:.2s}
+.need.on i{background:var(--grad);border-color:transparent}
+.res{text-align:center;padding:10px}
+.res .big{font-family:var(--fh);font-size:2.4rem;font-weight:700;margin:6px 0}
+.res p{color:var(--mut);margin-bottom:16px}
+
 .faq{max-width:780px;margin:50px auto 0;display:grid;gap:12px}
-.qa{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.qa{background:var(--card);border:1px solid var(--line);border-radius:calc(var(--r)*.8);overflow:hidden}
 .qa button{width:100%;background:none;border:0;color:var(--txt);font:inherit;font-weight:600;font-size:1.05rem;padding:22px 26px;display:flex;justify-content:space-between;cursor:pointer;text-align:left;gap:20px}
 .qa button span{color:var(--b);transition:.3s;font-size:1.4rem;line-height:1}
 .qa.on button span{transform:rotate(45deg)}
 .qa div{max-height:0;overflow:hidden;transition:max-height .4s;color:var(--mut);padding:0 26px}
 .qa.on div{padding-bottom:22px}
 
-/* contact */
-.box{background:linear-gradient(135deg,rgba(var(--ar),.18),rgba(var(--br),.1)),var(--card);border:1px solid var(--line);border-radius:30px;padding:60px;
+.box{background:linear-gradient(135deg,color-mix(in srgb,var(--a) 18%,transparent),color-mix(in srgb,var(--b) 10%,transparent)),var(--card);border:1px solid var(--line);border-radius:calc(var(--r)*1.4);padding:60px;
   display:grid;grid-template-columns:1fr 1fr;gap:50px;position:relative;overflow:hidden}
-.box::after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:var(--c);filter:blur(140px);opacity:.12;right:-120px;top:-120px}
+.box::after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:var(--a);filter:blur(140px);opacity:.14;right:-120px;top:-120px;pointer-events:none}
 form{display:grid;gap:14px;position:relative;z-index:1}
-input,select,textarea{width:100%;background:rgba(var(--bgrgb),.7);border:1px solid var(--line);border-radius:12px;padding:15px 18px;color:var(--txt);font:inherit;outline:none;transition:.25s}
-input:focus,select:focus,textarea:focus{border-color:var(--b);box-shadow:0 0 0 4px rgba(var(--br),.12)}
-select option{background:var(--card)}
-textarea{min-height:100px;resize:vertical}
 .box h2{font-size:clamp(1.8rem,3.4vw,2.6rem)}
-.perks{list-style:none;margin-top:26px;display:grid;gap:12px;color:var(--mut);position:relative;z-index:1}
+.perks{list-style:none;margin:26px 0;display:grid;gap:12px;color:var(--mut);position:relative;z-index:1}
 .perks li::before{content:"✦";color:var(--b);margin-right:10px}
+.phone{max-width:320px;border-radius:24px;overflow:hidden;border:6px solid color-mix(in srgb,var(--txt) 85%,transparent);background:#efeae2;position:relative;z-index:1}
+.ptop{background:#075E54;color:#fff;padding:.65rem .9rem;display:flex;align-items:center;gap:.6rem;font-size:.9rem;font-weight:600}
+.ptop .av{width:30px;height:30px;border-radius:50%;background:var(--grad);display:grid;place-items:center;font-weight:700;font-size:.7rem;color:var(--on)}
+.chat{padding:.9rem .7rem;min-height:170px;display:grid;align-content:start;gap:.45rem}
+.bub{max-width:92%;padding:.5rem .7rem;border-radius:12px;border-top-right-radius:3px;font-size:.82rem;line-height:1.4;background:#dcf8c6;color:#111;justify-self:end;white-space:pre-wrap;animation:fd .3s}
+.bub .t{display:block;text-align:right;font-size:.65rem;color:#667;margin-top:.1rem}
+.bub.in{background:#fff;justify-self:start;border-top-right-radius:12px;border-top-left-radius:3px}
+.typing{display:inline-flex;gap:3px;padding:.15rem 0}.typing i{width:6px;height:6px;border-radius:50%;background:#99a;animation:ty 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes ty{40%{transform:translateY(-4px);opacity:.5}}
 
-footer{border-top:1px solid var(--line);padding:40px 0;color:var(--mut);font-size:.9rem}
+footer{border-top:1px solid var(--line);padding:40px 0 90px;color:var(--mut);font-size:.9rem}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
 .wa{position:fixed;right:22px;bottom:22px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;font-size:1.7rem;
   box-shadow:0 10px 30px rgba(37,211,102,.5);animation:pulse 2.4s infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}70%{box-shadow:0 0 0 20px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
-.toast{position:fixed;left:50%;bottom:24px;background:#fff;color:#111;padding:12px 20px;border-radius:999px;font-weight:600;z-index:70;transition:transform .3s,visibility .3s;visibility:hidden;transform:translate(-50%,200%)}
+.toast{position:fixed;left:50%;bottom:24px;background:var(--txt);color:var(--bg);padding:12px 20px;border-radius:999px;font-weight:600;z-index:120;transition:transform .3s,visibility .3s;visibility:hidden;transform:translate(-50%,200%);max-width:calc(100% - 32px);text-align:center}
 .toast.show{visibility:visible;transform:translate(-50%,0)}
+
+/* ---- Panel de personalización ---- */
+.fabp{position:fixed;left:22px;bottom:22px;z-index:60;display:flex;align-items:center;gap:10px;background:var(--card);color:var(--txt);border:1px solid var(--line);border-radius:999px;padding:10px 18px 10px 10px;font:inherit;font-weight:600;font-size:.9rem;cursor:pointer;box-shadow:0 12px 34px -10px rgba(0,0,0,.5)}
+.fabp i{width:34px;height:34px;border-radius:50%;background:var(--grad);display:grid;place-items:center;font-style:normal;color:var(--on);font-size:1rem;animation:spin 8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.fabp.hint::after{content:"";position:absolute;inset:-6px;border-radius:999px;border:2px solid var(--b);animation:pulse2 1.8s infinite;pointer-events:none}
+@keyframes pulse2{0%{transform:scale(.95);opacity:.9}100%{transform:scale(1.12);opacity:0}}
+#panel{position:fixed;top:0;right:0;bottom:0;width:min(390px,100%);background:var(--card);border-left:1px solid var(--line);z-index:90;transform:translateX(105%);transition:transform .35s ease;overflow-y:auto;padding:22px 22px 30px;box-shadow:-20px 0 60px -20px rgba(0,0,0,.5)}
+#panel.open{transform:none}
+.ph{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:18px}
+.ph h3{font-size:1.4rem}.ph p{color:var(--mut);font-size:.85rem;margin-top:4px}
+.x{border:0;background:rgba(var(--fgr),.08);color:var(--txt);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem;flex-shrink:0}
+.pg{padding:16px 0;border-top:1px solid var(--line)}
+.pg h4{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);margin-bottom:12px;font-family:var(--fb);font-weight:700}
+.sws{display:flex;flex-wrap:wrap;gap:10px}
+.sws .sw{width:36px;height:36px}
+.colrow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.colrow label{display:flex;align-items:center;gap:10px;font-size:.85rem;padding:8px 10px;border:1px solid var(--line);border-radius:12px;cursor:pointer}
+.colrow input[type=color]{width:34px;height:34px;border:0;padding:0;background:none;border-radius:8px;cursor:pointer}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{flex:1;min-width:70px;padding:10px 8px;border-radius:12px;border:1px solid var(--line);background:rgba(var(--fgr),.04);color:var(--txt);font:inherit;font-size:.85rem;font-weight:600;cursor:pointer;transition:.2s}
+.seg button:hover{border-color:var(--b)}
+.seg button[aria-pressed="true"]{background:var(--grad);color:var(--on);border-color:transparent}
+.fonts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.fonts button{padding:12px 10px;border-radius:12px;border:1px solid var(--line);background:rgba(var(--fgr),.04);color:var(--txt);cursor:pointer;text-align:center;transition:.2s}
+.fonts button b{display:block;font-size:1.5rem;line-height:1.1}
+.fonts button small{font-family:var(--fb);font-size:.72rem;color:var(--mut)}
+.fonts button[aria-pressed="true"]{border-color:var(--a);background:color-mix(in srgb,var(--a) 16%,transparent)}
+.range{display:flex;align-items:center;gap:12px;margin-top:12px}
+.range input{flex:1;accent-color:var(--a)}
+.range b{font-size:.8rem;min-width:44px;text-align:right}
+.mini{display:flex;gap:8px;margin-top:10px}
+.mini button{border:1px solid var(--line);background:rgba(var(--fgr),.04);color:var(--txt);border-radius:10px;padding:8px 14px;font:inherit;font-weight:700;cursor:pointer}
+@media (max-width:640px){
+  #panel{top:auto;height:64vh;width:100%;border-left:0;border-top:1px solid var(--line);border-radius:22px 22px 0 0;transform:translateY(105%)}
+  #panel.open{transform:none}
+  .fabp span{display:none}.fabp{padding:10px}
+}
 
 .rv{opacity:0;transform:translateY(40px);transition:opacity .8s,transform .8s}
 .rv.in{opacity:1;transform:none}
+[data-anim="off"] *,[data-anim="off"] *::before,[data-anim="off"] *::after{animation:none!important;transition:none!important}
+[data-anim="off"] .rv{opacity:1;transform:none}
 
 @media(max-width:960px){
   .grid3,.plans{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}
-  .demo{grid-template-columns:minmax(0,1fr)}.opts{flex-direction:row;overflow-x:auto;padding-bottom:6px}.opt{flex:0 0 auto}
+  .demo{grid-template-columns:minmax(0,1fr)}.opts{overflow-x:auto}.optrow{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px}.optrow .opt{flex:0 0 auto}
   .steps{grid-template-columns:1fr 1fr;row-gap:40px}.steps::before,.steps::after{display:none}
-  .box{grid-template-columns:1fr;padding:34px}
-  .links{position:fixed;top:72px;left:0;right:0;background:rgba(var(--bgrgb),.97);flex-direction:column;padding:26px;gap:20px;display:none;border-bottom:1px solid var(--line)}
+  .box{grid-template-columns:1fr;padding:34px}.quiz{grid-template-columns:1fr}.needs{grid-template-columns:1fr}
+  .links{position:fixed;top:72px;left:0;right:0;background:color-mix(in srgb,var(--bg) 97%,transparent);flex-direction:column;padding:26px;gap:18px;display:none;border-bottom:1px solid var(--line);align-items:flex-start}
   .links.open{display:flex}.burger{display:block}
   .s-hero{grid-template-columns:1fr}.s-img{display:none}
   section{padding:80px 0}
@@ -210,248 +269,489 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
 <nav id="nav"><div class="wrap">
   <a href="#hero" class="logo"><i><b></b><b></b><b></b><b></b></i><span data-brand>Sonetix</span></a>
   <div class="links" id="links">
-    <a href="#servicios">Servicios</a><a href="#demo">Pruébalo</a><a href="#proceso">Proceso</a><a href="#planes">Planes</a><a href="#faq">Preguntas</a>
-    <button class="tema" id="tema" type="button" aria-label="Cambiar color"><i></i><span id="temaT">Rojo</span></button>
-    <a href="#contacto" class="btn p" style="padding:10px 22px;color:#fff">Cotizar</a>
+    <a href="#servicios" data-t="nav.serv"></a><a href="#demo" data-t="nav.demo"></a><a href="#proceso" data-t="nav.proc"></a><a href="#planes" data-t="nav.plans"></a><a href="#faq" data-t="nav.faq"></a>
+    <button class="pbtn" id="pbtn" type="button"><i></i><span data-t="nav.pers"></span></button>
+    <select class="sel" id="lang" aria-label="Idioma / Language"><option value="es">🇪🇸 Español</option><option value="en">🇬🇧 English</option><option value="pt">🇧🇷 Português</option><option value="fr">🇫🇷 Français</option></select>
+    <a href="#contacto" class="btn p sm" data-t="nav.cta"></a>
   </div>
   <button class="burger" id="burger" aria-label="Menú">☰</button>
 </div></nav>
 
 <header id="hero"><canvas id="net"></canvas>
 <div class="wrap">
-  <div class="pill"><span></span> Cupos abiertos este mes</div>
-  <h1>Páginas web hechas<br>a la medida de tu <span class="grad" id="typed"></span></h1>
-  <p class="lead">Nada de plantillas genéricas. Diseñamos tu sitio según cómo trabaja tu negocio y lo mantenemos vivo: hosting, cambios, seguridad y soporte incluidos.</p>
+  <div class="pill"><span></span><i style="font-style:normal" data-t="hero.pill"></i></div>
+  <h1><span data-t="hero.h1a"></span><br><span data-t="hero.h1b"></span> <span class="grad" id="typed"></span></h1>
+  <p class="lead" data-t="hero.lead"></p>
   <div class="cta">
-    <a href="#contacto" class="btn p">Quiero mi página →</a>
-    <a href="#demo" class="btn g">▶ Ver cómo se adapta</a>
+    <a href="#planes" class="btn p" data-t="hero.c1"></a>
+    <a href="#demo" class="btn g" data-t="hero.c2"></a>
   </div>
   <div class="wave" id="wave"></div>
 </div></header>
 
 <div class="wrap"><div class="stats rv">
-  <div class="stat"><strong data-n="100" data-s="%">0</strong><span>Diseño personalizado</span></div>
-  <div class="stat"><strong data-n="7" data-s=" días">0</strong><span>Primer borrador listo</span></div>
-  <div class="stat"><strong data-n="99.9" data-s="%">0</strong><span>Disponibilidad objetivo</span></div>
-  <div class="stat"><strong data-n="24" data-s="h">0</strong><span>Respuesta a cambios</span></div>
+  <div class="stat"><strong data-n="100" data-u="%">0</strong><span data-t="st.1"></span></div>
+  <div class="stat"><strong data-n="7" data-u="u.d">0</strong><span data-t="st.2"></span></div>
+  <div class="stat"><strong data-n="99.9" data-u="%">0</strong><span data-t="st.3"></span></div>
+  <div class="stat"><strong data-n="24" data-u="u.h">0</strong><span data-t="st.4"></span></div>
 </div></div>
 
 <section id="servicios"><div class="wrap">
-  <div class="center rv"><span class="tag">Qué hacemos</span><h2>Creamos <span class="grad">y cuidamos</span> tu presencia online</h2>
-  <p class="lead">Una web no termina el día que se publica. Por eso te acompañamos antes, durante y después del lanzamiento.</p></div>
-  <div class="grid3">
-    <div class="card rv"><div class="ico">🎨</div><h3>Diseño 100% personalizado</h3><p>Tu identidad, tus colores, tu forma de vender. Cada sección se piensa para tu tipo de cliente, no para "cualquier negocio".</p></div>
-    <div class="card rv"><div class="ico">⚙️</div><h3>Adaptada a tu operación</h3><p>Reservas, catálogo, cotizador, pagos, formularios o WhatsApp. Integramos justo lo que tu negocio necesita y nada de relleno.</p></div>
-    <div class="card rv"><div class="ico">📱</div><h3>Rápida y en cualquier pantalla</h3><p>Se ve y se siente bien en celular, tablet y computador. Optimizada para cargar veloz y aparecer en Google.</p></div>
-    <div class="card rv"><div class="ico">🛡️</div><h3>Sostenimiento mensual</h3><p>Hosting, dominio, certificado SSL, copias de seguridad y actualizaciones. Tú te enfocas en vender, nosotros en que no se caiga.</p></div>
-    <div class="card rv"><div class="ico">✏️</div><h3>Cambios cuando los necesites</h3><p>Nuevo precio, nueva promo, nueva sección. Pídelo y lo publicamos, sin tener que aprender código ni pelear con un editor.</p></div>
-    <div class="card rv"><div class="ico">📈</div><h3>Pensada para generar clientes</h3><p>Llamados a la acción claros, métricas y mejoras continuas para que tu web sea una vendedora y no solo una tarjeta.</p></div>
-  </div>
+  <div class="center rv"><span class="tag" data-t="sv.tag"></span><h2 data-t="sv.h"></h2><p class="lead" data-t="sv.lead"></p></div>
+  <div class="grid3" id="svcs"></div>
 </div></section>
 
 <section id="demo"><div class="wrap">
-  <div class="center rv"><span class="tag">Interactivo</span><h2>Mira cómo <span class="grad">cambia</span> según tu negocio</h2>
-  <p class="lead">Elige un tipo de negocio y observa cómo la misma web se transforma: mensaje, colores, secciones y acciones.</p></div>
+  <div class="center rv"><span class="tag" data-t="dm.tag"></span><h2 data-t="dm.h"></h2><p class="lead" data-t="dm.lead"></p></div>
   <div class="demo rv">
-    <div class="opts" id="opts"></div>
+    <div class="opts">
+      <div class="namebox"><label for="dname" data-t="dm.name"></label><input class="inp" id="dname" maxlength="28" data-tp="dm.nameph" autocomplete="off"></div>
+      <div class="optrow" id="opts" style="display:grid;gap:12px"></div>
+      <div class="quick"><span data-t="dm.colors"></span><span id="qsw" style="display:flex;gap:8px;flex-wrap:wrap"></span></div>
+    </div>
     <div>
       <div class="browser" id="browser">
         <div class="bbar"><i></i><i></i><i></i><div class="url" id="url"></div></div>
         <div class="site" id="site"></div>
       </div>
-      <p class="note">✨ Esto es solo un ejemplo: la tuya se diseña desde cero con tu marca.</p>
+      <p class="note" data-t="dm.note"></p>
     </div>
   </div>
 </div></section>
 
 <section id="proceso"><div class="wrap">
-  <div class="center rv"><span class="tag">Cómo trabajamos</span><h2>De la idea a tu web <span class="grad">en 4 pasos</span></h2></div>
-  <div class="steps" id="steps">
-    <div class="step rv"><div class="num">1</div><h3>Te escuchamos</h3><p>Conversamos sobre tu negocio, tus clientes y tus metas.</p></div>
-    <div class="step rv"><div class="num">2</div><h3>Diseñamos</h3><p>Te mostramos una propuesta visual hecha para ti.</p></div>
-    <div class="step rv"><div class="num">3</div><h3>Construimos</h3><p>Desarrollamos, probamos y ajustamos contigo.</p></div>
-    <div class="step rv"><div class="num">4</div><h3>Publicamos y cuidamos</h3><p>Lanzamos y nos quedamos para mantenerla al día.</p></div>
+  <div class="center rv"><span class="tag" data-t="pr.tag"></span><h2 data-t="pr.h"></h2></div>
+  <div class="steps" id="steps"></div>
+</div></section>
+
+<section id="planes" style="background:linear-gradient(180deg,var(--bg),var(--bg2),var(--bg))"><div class="wrap">
+  <div class="center rv"><span class="tag" data-t="pl.tag"></span><h2 data-t="pl.h"></h2><p class="lead" data-t="pl.lead"></p></div>
+  <div class="plans" id="plans"></div>
+  <p class="fine" data-t="pl.fine"></p>
+  <div class="quiz card rv">
+    <div>
+      <h3 data-t="qz.h"></h3><p class="lead" style="font-size:.95rem" data-t="qz.lead"></p>
+      <div class="needs" id="needs"></div>
+    </div>
+    <div class="res" id="res"></div>
   </div>
 </div></section>
 
-<section id="planes"><div class="wrap">
-  <div class="center rv"><span class="tag">Planes de sostenimiento</span><h2>Elige cómo quieres <span class="grad">que la cuidemos</span></h2>
-  <p class="lead">La creación se cotiza según tu proyecto. El plan mensual mantiene todo funcionando.</p>
-  <div class="toggle" id="toggle"><button class="on" data-m="m">Mensual</button><button data-m="a">Anual <em>-20%</em></button></div></div>
-  <div class="plans" id="plans"></div>
-  <p class="fine">* Precios de ejemplo en COP. Cámbialos en la sección CONFIG del archivo.</p>
-</div></section>
-
 <section id="faq"><div class="wrap">
-  <div class="center rv"><span class="tag">Dudas frecuentes</span><h2>Preguntas <span class="grad">comunes</span></h2></div>
+  <div class="center rv"><span class="tag" data-t="fq.tag"></span><h2 data-t="fq.h"></h2></div>
   <div class="faq rv" id="faq-list"></div>
 </div></section>
 
 <section id="contacto"><div class="wrap">
   <div class="box rv">
     <div>
-      <span class="tag">Hablemos</span>
-      <h2>Cuéntanos de tu negocio y te enviamos <span class="grad">una propuesta</span></h2>
-      <ul class="perks"><li>Cotización sin compromiso</li><li>Respuesta en menos de 24 horas</li><li>Primer borrador en una semana</li></ul>
+      <span class="tag" data-t="ct.tag"></span>
+      <h2 data-t="ct.h"></h2>
+      <ul class="perks"><li data-t="ct.p1"></li><li data-t="ct.p2"></li><li data-t="ct.p3"></li></ul>
+      <div class="phone"><div class="ptop"><span class="av">SX</span><div><span data-brand>Sonetix</span></div></div><div class="chat" id="chat"></div></div>
     </div>
-    <form id="form">
-      <input id="f-n" placeholder="Tu nombre" required>
-      <input id="f-b" placeholder="Nombre de tu negocio" required>
-      <select id="f-t"><option>Heladería</option><option>Restaurante / cafetería</option><option>Tienda / comercio</option><option>Salud / bienestar</option><option>Servicios profesionales</option><option>Otro</option></select>
-      <textarea id="f-m" placeholder="¿Qué te gustaría que hiciera tu página?"></textarea>
-      <button class="btn p" type="submit" style="justify-content:center">Enviar por WhatsApp →</button>
+    <form id="form" autocomplete="off">
+      <input class="inp" id="f-n" data-tp="ct.name" required>
+      <input class="inp" id="f-b" data-tp="ct.biz" required>
+      <select class="inp" id="f-t"></select>
+      <select class="inp" id="f-p"></select>
+      <textarea class="inp" id="f-m" data-tp="ct.msg"></textarea>
+      <button class="btn p" type="submit" data-t="ct.send"></button>
     </form>
   </div>
 </div></section>
 
-<footer><div class="wrap"><span>© <span id="yr"></span> <span data-brand>Sonetix</span>. Páginas web a la medida.</span><span>Hecho con ♥ para negocios que quieren crecer</span></div></footer>
+<footer><div class="wrap"><span>© <span id="yr"></span> <span data-brand>Sonetix</span>. <span data-t="ft.r"></span></span><span data-t="ft.m"></span></div></footer>
+
+<button class="fabp hint" id="fabp" type="button" aria-label="Personalizar"><i>🎨</i><span data-t="nav.pers"></span></button>
 <a class="wa" id="wa" href="#" aria-label="WhatsApp" target="_blank" rel="noopener">💬</a>
 <div class="toast" id="toast" role="status"></div>
 
+<aside id="panel" aria-label="Personalizar" aria-hidden="true">
+  <div class="ph"><div><h3 data-t="pn.t"></h3><p data-t="pn.s"></p></div><button class="x" id="pclose" aria-label="Cerrar">✕</button></div>
+  <div class="pg"><h4 data-t="pn.col"></h4>
+    <div class="sws" id="sws"></div>
+    <div class="colrow"><label><input type="color" id="c1"><span data-t="pn.pri"></span></label><label><input type="color" id="c2"><span data-t="pn.sec"></span></label></div>
+    <div class="mini"><button id="rand" type="button">🎲 <span data-t="pn.rand"></span></button></div>
+  </div>
+  <div class="pg"><h4 data-t="pn.mode"></h4><div class="seg" id="segMode"><button data-v="oscuro" data-t="pn.dark"></button><button data-v="claro" data-t="pn.light"></button></div></div>
+  <div class="pg"><h4 data-t="pn.font"></h4><div class="fonts" id="fonts"></div>
+    <div class="range"><span style="font-size:.8rem">A</span><input type="range" id="fsz" min="85" max="125" step="5"><span style="font-size:1.25rem">A</span><b id="fszv"></b></div>
+  </div>
+  <div class="pg"><h4 data-t="pn.shape"></h4><div class="seg" id="segShape"><button data-v="sq" data-t="pn.sq"></button><button data-v="soft" data-t="pn.soft"></button><button data-v="round" data-t="pn.round"></button></div></div>
+  <div class="pg"><h4 data-t="pn.anim"></h4><div class="seg" id="segAnim"><button data-v="on" data-t="pn.on"></button><button data-v="off" data-t="pn.off"></button></div></div>
+  <div class="pg"><button class="btn g" id="reset" type="button" style="width:100%" data-t="pn.reset"></button></div>
+</aside>
+
 <script>
-/* ============ CONFIG: edita aquí ============ */
+/* ================== CONFIG: edita aquí ================== */
 const CONFIG={
   marca:'Sonetix',
-  whatsapp:'573000000000',         // número con código de país, sin + ni espacios
-  temaInicial:'rojo',              // 'rojo' o 'violeta'
-  palabras:['heladería','restaurante','tienda','consultorio','negocio'],
-  planes:[
-    {n:'Esencial',d:'Para mantener tu web viva y segura.',m:89000,items:['Hosting y dominio incluidos','Certificado SSL','Copias de seguridad','1 cambio menor al mes','Soporte por WhatsApp']},
-    {n:'Crece',d:'Para negocios que actualizan seguido.',m:189000,hot:true,items:['Todo lo de Esencial','Hasta 5 cambios al mes','Informe mensual de visitas','Mejoras de velocidad y SEO','Respuesta prioritaria < 12 h']},
-    {n:'A medida',d:'Para proyectos con funciones propias.',m:null,items:['Todo lo de Crece','Reservas, pagos o catálogo','Integraciones personalizadas','Evolución continua','Reunión mensual de avances']}
-  ],
-  faq:[
-    ['¿Por qué dicen que mi página es personalizada?','Porque no partimos de una plantilla genérica. Primero entendemos cómo trabaja tu negocio y a partir de eso diseñamos estructura, mensajes y funciones.'],
-    ['¿Cuánto cuesta crear la página?','Depende de lo que necesites: una página informativa no cuesta lo mismo que una con reservas o tienda. Cuéntanos tu caso y te enviamos una cotización clara.'],
-    ['¿Qué incluye el sostenimiento?','Hosting, dominio, certificado de seguridad, copias de respaldo, actualizaciones técnicas y un número de cambios mensuales según tu plan.'],
-    ['¿Cuánto tarda en estar lista?','El primer borrador lo ves en aproximadamente una semana. El tiempo total depende del alcance, pero siempre te damos fechas desde el inicio.'],
-    ['¿Y si quiero cambiar algo después?','Es justo para eso que existe el plan mensual. Nos escribes y lo hacemos, sin que tengas que tocar código.'],
-    ['¿La página será mía?','Sí. El dominio y el contenido son tuyos. Si algún día quieres llevarte la web a otro lado, te acompañamos en el traslado.']
-  ]
+  whatsapp:'573017759082',          // número con código de país, sin + ni espacios
+  moneda:'USD',
+  precios:[30,40,50],               // mensual: Informativa, Interactiva, Completa
+  inicial:{a:'#e11d2e',b:'#ff4d4d',modo:'oscuro',fuente:'moderna',tam:100,forma:'round',anim:'on',idioma:'es'}
 };
-/* ============================================== */
+/* ======================================================== */
+
+/* ================== TEXTOS EN 4 IDIOMAS ================== */
+const T={
+es:{
+'meta.title':'Sonetix · Páginas web a la medida',
+'nav.serv':'Servicios','nav.demo':'Pruébalo','nav.proc':'Proceso','nav.plans':'Paquetes','nav.faq':'Preguntas','nav.cta':'Cotizar','nav.pers':'Personaliza',
+'hero.pill':'Cupos abiertos este mes','hero.h1a':'Páginas web hechas','hero.h1b':'a la medida de tu',
+'hero.words':['heladería','restaurante','tienda','consultorio','negocio'],
+'hero.lead':'Nada de plantillas genéricas. Diseñamos tu sitio según cómo trabaja tu negocio y lo mantenemos vivo: hosting, cambios, seguridad y soporte incluidos.',
+'hero.c1':'Ver paquetes →','hero.c2':'▶ Ver cómo se adapta',
+'st.1':'Diseño personalizado','st.2':'Primer borrador listo','st.3':'Disponibilidad objetivo','st.4':'Respuesta a cambios','u.d':' días','u.h':' h',
+'sv.tag':'Qué hacemos','sv.h':'Creamos <span class="grad">y cuidamos</span> tu presencia online','sv.lead':'Una web no termina el día que se publica. Te acompañamos antes, durante y después del lanzamiento.',
+'sv.list':[['🎨','Diseño 100% personalizado','Tu identidad, tus colores, tu forma de vender. Mira el botón «Personaliza»: así de fácil adaptamos la web a cada cliente.'],['⚙️','Adaptada a tu operación','Reservas, catálogo, pagos, formularios o WhatsApp. Integramos justo lo que tu negocio necesita y nada de relleno.'],['📱','Rápida y en cualquier pantalla','Se ve y se siente bien en celular, tablet y computador. Optimizada para cargar veloz y aparecer en Google.'],['🛡️','Sostenimiento mensual','Hosting, dominio, certificado SSL, copias de seguridad y actualizaciones. Tú te enfocas en vender, nosotros en que no se caiga.'],['✏️','Cambios cuando los necesites','Nuevo precio, nueva promo, nueva sección. Pídelo y lo publicamos, sin tener que aprender código.'],['📈','Pensada para generar clientes','Llamados a la acción claros y mejoras continuas para que tu web venda y no sea solo una tarjeta.']],
+'dm.tag':'Interactivo','dm.h':'Mira cómo <span class="grad">cambia</span> según tu negocio','dm.lead':'Escribe el nombre de tu negocio, elige un rubro y prueba colores: así se ve una web hecha a tu medida.',
+'dm.name':'Nombre de tu negocio','dm.nameph':'Ej. La Dulce Esquina','dm.colors':'Prueba colores:','dm.note':'✨ Esto es solo un ejemplo: la tuya se diseña desde cero con tu marca.',
+'dm.nav':['Inicio','Servicios','Contacto'],
+'neg':[
+ {k:'Heladería',s:'Sabores, combos y pedidos',h:'Helados que se piden en 10 segundos',p:'Sabores del día, combos y pedidos directos por WhatsApp.',b:'Ver sabores',f:['Sabores','Combos','Pedidos']},
+ {k:'Restaurante',s:'Menú, reservas y pedidos',h:'Una mesa reservada en un par de clics',p:'Menú digital, reservas en línea y pedidos para llevar.',b:'Reservar mesa',f:['Menú con fotos','Reservas','Domicilios']},
+ {k:'Tienda',s:'Catálogo y pagos en línea',h:'Tu tienda abierta las 24 horas',p:'Catálogo atractivo, carrito y pagos seguros para vender sin parar.',b:'Ver colección',f:['Catálogo','Carrito','Pagos']},
+ {k:'Consultorio',s:'Citas y atención al paciente',h:'Agenda tu cita sin hacer filas',p:'Agenda en línea, tratamientos y contacto inmediato.',b:'Agendar cita',f:['Agenda en línea','Tratamientos','Ubicación']},
+ {k:'Gimnasio',s:'Planes y membresías',h:'Convierte visitantes en miembros',p:'Planes, horarios de clases e inscripción desde el celular.',b:'Inscribirme',f:['Planes','Horarios','Inscripción']}],
+'pr.tag':'Cómo trabajamos','pr.h':'De la idea a tu web <span class="grad">en 4 pasos</span>',
+'pr.list':[['Te escuchamos','Conversamos sobre tu negocio, tus clientes y tus metas.'],['Diseñamos','Te mostramos una propuesta visual hecha para ti.'],['Construimos','Desarrollamos, probamos y ajustamos contigo.'],['Publicamos y cuidamos','Lanzamos y nos quedamos para mantenerla al día.']],
+'pl.tag':'Paquetes','pl.h':'Elige el paquete <span class="grad">que va contigo</span>','pl.lead':'Tres opciones con pago mensual. Todo incluye diseño personalizado, hosting y soporte.',
+'pl.mo':'/mes','pl.pick':'Elegir este paquete','pl.badge':'Más elegido','pl.fine':'Precios mensuales en USD.',
+'pl.list':[
+ {e:'📄',n:'Informativa',d:'Para que tu negocio tenga una web profesional y se encuentre en internet.',f:['Página web informativa a tu medida','Diseño con tus colores y tu marca','Hosting, dominio y certificado SSL','Copias de seguridad y actualizaciones','Soporte por WhatsApp']},
+ {e:'💬',n:'Interactiva',d:'Tu web conversa con tus clientes y conecta directo con tu WhatsApp.',f:['Todo lo del paquete Informativa','Botón de WhatsApp en toda la página','Formularios que envían mensajes a tu WhatsApp','Animaciones e interacción con el cliente','Cambios de contenido incluidos']},
+ {e:'🚀',n:'Completa',d:'Todo lo que necesites para vender y crecer, sin límites de funciones.',f:['Todo lo del paquete Interactiva','Reservas, pagos en línea y catálogo','Varios idiomas y funciones a medida','Todo lo que tu negocio necesite','Soporte prioritario']}],
+'qz.h':'¿No sabes cuál elegir?','qz.lead':'Marca lo que necesitas y te recomendamos un paquete.',
+'qz.needs':['Mostrar mi negocio e información','Botón y mensajes por WhatsApp','Reservas o citas en línea','Pagos en línea','Catálogo o tienda','Varios idiomas','Funciones a medida'],
+'qz.none':'Marca lo que necesitas y te mostramos el paquete ideal.','qz.rec':'Te recomendamos el paquete','qz.btn':'Quiero este paquete',
+'fq.tag':'Dudas frecuentes','fq.h':'Preguntas <span class="grad">comunes</span>',
+'fq.list':[['¿Por qué dicen que mi página es personalizada?','Porque no partimos de una plantilla genérica. Primero entendemos cómo trabaja tu negocio y, a partir de eso, diseñamos estructura, colores, mensajes y funciones. Prueba el botón «Personaliza» de esta página.'],['¿Cuánto cuesta?','Tenemos tres paquetes mensuales: Informativa por USD 30, Interactiva por USD 40 y Completa por USD 50. Cada uno incluye diseño personalizado, hosting y soporte.'],['¿Qué incluye el sostenimiento?','Hosting, dominio, certificado de seguridad, copias de respaldo y actualizaciones técnicas, además de soporte por WhatsApp.'],['¿Cuánto tarda en estar lista?','El primer borrador lo ves en aproximadamente una semana. El tiempo total depende del paquete, pero siempre te damos fechas desde el inicio.'],['¿Puedo cambiar de paquete después?','Sí. Puedes empezar con el Informativo y subir al Interactivo o al Completo cuando tu negocio lo pida.']],
+'ct.tag':'Hablemos','ct.h':'Cuéntanos de tu negocio y te enviamos <span class="grad">una propuesta</span>','ct.p1':'Cotización sin compromiso','ct.p2':'Respuesta en menos de 24 horas','ct.p3':'Primer borrador en una semana',
+'ct.name':'Tu nombre','ct.biz':'Nombre de tu negocio','ct.msg':'¿Qué te gustaría que hiciera tu página?','ct.send':'Enviar por WhatsApp →','ct.other':'Otro','ct.unsure':'Aún no sé qué paquete','ct.pkg':'Paquete',
+'msg.t':'Hola Sonetix, soy {n}{b} ({tp}). Me interesa: {pk}. {m}','msg.name':'[tu nombre]','msg.def':'Quiero cotizar una página web.',
+'ft.r':'Páginas web a la medida.','ft.m':'Hecho con ♥ para negocios que quieren crecer',
+'pn.t':'Personaliza esta página','pn.s':'Así adaptamos la web de cada cliente a su marca. Prueba y mira cómo cambia en vivo.','pn.col':'Colores','pn.pri':'Principal','pn.sec':'Secundario','pn.rand':'Sorpréndeme','pn.mode':'Modo','pn.dark':'🌙 Oscuro','pn.light':'☀️ Claro','pn.font':'Tipo de letra','pn.size':'Tamaño','pn.shape':'Forma','pn.sq':'Recta','pn.soft':'Suave','pn.round':'Redonda','pn.anim':'Animaciones','pn.on':'Activas','pn.off':'Apagadas','pn.reset':'↺ Restablecer','pn.f':['Moderna','Elegante','Amigable','Técnica'],
+'to.wa':'Abriendo WhatsApp…','to.pk':'Paquete seleccionado','to.reset':'Restablecido','to.cl':'Colores aplicados'
+},
+en:{
+'meta.title':'Sonetix · Custom-made websites',
+'nav.serv':'Services','nav.demo':'Try it','nav.proc':'Process','nav.plans':'Plans','nav.faq':'FAQ','nav.cta':'Get a quote','nav.pers':'Customize',
+'hero.pill':'Open spots this month','hero.h1a':'Websites made','hero.h1b':'to fit your',
+'hero.words':['ice cream shop','restaurant','store','clinic','business'],
+'hero.lead':'No generic templates. We design your site around how your business works and keep it alive: hosting, changes, security and support included.',
+'hero.c1':'See plans →','hero.c2':'▶ See how it adapts',
+'st.1':'Custom design','st.2':'First draft ready','st.3':'Uptime target','st.4':'Response to changes','u.d':' days','u.h':' h',
+'sv.tag':'What we do','sv.h':'We build <span class="grad">and look after</span> your online presence','sv.lead':'A website doesn’t end the day it goes live. We’re with you before, during and after launch.',
+'sv.list':[['🎨','100% custom design','Your identity, your colors, your way of selling. Try the “Customize” button: that’s how easily we adapt a site to each client.'],['⚙️','Fitted to your operation','Bookings, catalog, payments, forms or WhatsApp. We add exactly what your business needs, no filler.'],['📱','Fast, on any screen','Looks and feels great on phone, tablet and desktop. Optimized to load fast and show up on Google.'],['🛡️','Monthly maintenance','Hosting, domain, SSL certificate, backups and updates. You focus on selling, we keep it up and running.'],['✏️','Changes when you need them','New price, new promo, new section. Ask and we publish it, no coding required.'],['📈','Built to bring in customers','Clear calls to action and ongoing improvements so your site sells instead of just being a business card.']],
+'dm.tag':'Interactive','dm.h':'See how it <span class="grad">changes</span> for your business','dm.lead':'Type your business name, pick an industry and try colors: this is what a site made to measure looks like.',
+'dm.name':'Your business name','dm.nameph':'E.g. Sweet Corner','dm.colors':'Try colors:','dm.note':'✨ This is just an example: yours is designed from scratch with your brand.',
+'dm.nav':['Home','Services','Contact'],
+'neg':[
+ {k:'Ice cream shop',s:'Flavors, combos and orders',h:'Ice cream ordered in 10 seconds',p:'Flavors of the day, combos and direct orders via WhatsApp.',b:'See flavors',f:['Flavors','Combos','Orders']},
+ {k:'Restaurant',s:'Menu, bookings and orders',h:'A table booked in a couple of clicks',p:'Digital menu, online bookings and takeaway orders.',b:'Book a table',f:['Photo menu','Bookings','Delivery']},
+ {k:'Store',s:'Catalog and online payments',h:'Your store, open 24 hours',p:'Attractive catalog, cart and secure payments to sell non-stop.',b:'View collection',f:['Catalog','Cart','Payments']},
+ {k:'Clinic',s:'Appointments and patient care',h:'Book your appointment, skip the line',p:'Online scheduling, treatments and instant contact.',b:'Book appointment',f:['Online booking','Treatments','Location']},
+ {k:'Gym',s:'Plans and memberships',h:'Turn visitors into members',p:'Plans, class schedules and sign-up straight from your phone.',b:'Join now',f:['Plans','Schedule','Sign-up']}],
+'pr.tag':'How we work','pr.h':'From idea to website <span class="grad">in 4 steps</span>',
+'pr.list':[['We listen','We talk about your business, your customers and your goals.'],['We design','We show you a visual proposal made for you.'],['We build','We develop, test and adjust together with you.'],['We launch and care','We go live and stay on to keep it up to date.']],
+'pl.tag':'Plans','pl.h':'Pick the plan <span class="grad">that fits you</span>','pl.lead':'Three options with monthly billing. Everything includes custom design, hosting and support.',
+'pl.mo':'/mo','pl.pick':'Choose this plan','pl.badge':'Most popular','pl.fine':'Monthly prices in USD.',
+'pl.list':[
+ {e:'📄',n:'Informative',d:'So your business has a professional website and can be found online.',f:['Informative website tailored to you','Design with your colors and brand','Hosting, domain and SSL certificate','Backups and updates','WhatsApp support']},
+ {e:'💬',n:'Interactive',d:'Your site talks to your customers and connects straight to your WhatsApp.',f:['Everything in the Informative plan','WhatsApp button across the site','Forms that send messages to your WhatsApp','Animations and customer interaction','Content changes included']},
+ {e:'🚀',n:'Complete',d:'Everything you need to sell and grow, with no limits on features.',f:['Everything in the Interactive plan','Bookings, online payments and catalog','Multiple languages and custom features','Whatever your business needs','Priority support']}],
+'qz.h':'Not sure which to pick?','qz.lead':'Tick what you need and we’ll recommend a plan.',
+'qz.needs':['Showcase my business and info','WhatsApp button and messages','Online bookings or appointments','Online payments','Catalog or store','Multiple languages','Custom features'],
+'qz.none':'Tick what you need and we’ll show you the ideal plan.','qz.rec':'We recommend the plan','qz.btn':'I want this plan',
+'fq.tag':'FAQ','fq.h':'Common <span class="grad">questions</span>',
+'fq.list':[['Why do you say my site is custom-made?','Because we don’t start from a generic template. We first understand how your business works and then design structure, colors, messages and features around it. Try the “Customize” button on this page.'],['How much does it cost?','We have three monthly plans: Informative for USD 30, Interactive for USD 40 and Complete for USD 50. Each includes custom design, hosting and support.'],['What does maintenance include?','Hosting, domain, security certificate, backups and technical updates, plus WhatsApp support.'],['How long until it’s ready?','You’ll see a first draft in about a week. Total time depends on the plan, but we always give you dates from the start.'],['Can I switch plans later?','Yes. Start with Informative and move up to Interactive or Complete whenever your business needs it.']],
+'ct.tag':'Let’s talk','ct.h':'Tell us about your business and we’ll send <span class="grad">a proposal</span>','ct.p1':'No-obligation quote','ct.p2':'Reply within 24 hours','ct.p3':'First draft in a week',
+'ct.name':'Your name','ct.biz':'Your business name','ct.msg':'What would you like your site to do?','ct.send':'Send via WhatsApp →','ct.other':'Other','ct.unsure':'Not sure which plan yet','ct.pkg':'Plan',
+'msg.t':'Hi Sonetix, I’m {n}{b} ({tp}). I’m interested in: {pk}. {m}','msg.name':'[your name]','msg.def':'I’d like a quote for a website.',
+'ft.r':'Custom-made websites.','ft.m':'Made with ♥ for businesses that want to grow',
+'pn.t':'Customize this page','pn.s':'This is how we adapt each client’s site to their brand. Try it and watch it change live.','pn.col':'Colors','pn.pri':'Primary','pn.sec':'Secondary','pn.rand':'Surprise me','pn.mode':'Mode','pn.dark':'🌙 Dark','pn.light':'☀️ Light','pn.font':'Typeface','pn.size':'Size','pn.shape':'Shape','pn.sq':'Sharp','pn.soft':'Soft','pn.round':'Round','pn.anim':'Animations','pn.on':'On','pn.off':'Off','pn.reset':'↺ Reset','pn.f':['Modern','Elegant','Friendly','Technical'],
+'to.wa':'Opening WhatsApp…','to.pk':'Plan selected','to.reset':'Reset done','to.cl':'Colors applied'
+},
+pt:{
+'meta.title':'Sonetix · Sites sob medida',
+'nav.serv':'Serviços','nav.demo':'Experimente','nav.proc':'Processo','nav.plans':'Pacotes','nav.faq':'Perguntas','nav.cta':'Orçamento','nav.pers':'Personalize',
+'hero.pill':'Vagas abertas este mês','hero.h1a':'Sites feitos','hero.h1b':'sob medida para sua',
+'hero.words':['sorveteria','restaurante','loja','clínica','empresa'],
+'hero.lead':'Nada de modelos genéricos. Desenhamos seu site conforme o jeito que seu negócio funciona e o mantemos vivo: hospedagem, alterações, segurança e suporte incluídos.',
+'hero.c1':'Ver pacotes →','hero.c2':'▶ Ver como se adapta',
+'st.1':'Design personalizado','st.2':'Primeiro rascunho pronto','st.3':'Meta de disponibilidade','st.4':'Resposta a alterações','u.d':' dias','u.h':' h',
+'sv.tag':'O que fazemos','sv.h':'Criamos <span class="grad">e cuidamos</span> da sua presença online','sv.lead':'Um site não termina no dia em que é publicado. Acompanhamos você antes, durante e depois do lançamento.',
+'sv.list':[['🎨','Design 100% personalizado','Sua identidade, suas cores, seu jeito de vender. Experimente o botão «Personalize»: assim adaptamos o site a cada cliente.'],['⚙️','Adaptado à sua operação','Reservas, catálogo, pagamentos, formulários ou WhatsApp. Integramos só o que seu negócio precisa, sem enrolação.'],['📱','Rápido e em qualquer tela','Fica ótimo no celular, tablet e computador. Otimizado para carregar rápido e aparecer no Google.'],['🛡️','Manutenção mensal','Hospedagem, domínio, certificado SSL, backups e atualizações. Você foca em vender, nós em manter tudo no ar.'],['✏️','Alterações quando precisar','Novo preço, nova promoção, nova seção. Peça e publicamos, sem você aprender código.'],['📈','Pensado para gerar clientes','Chamadas claras para ação e melhorias contínuas para que seu site venda e não seja só um cartão de visita.']],
+'dm.tag':'Interativo','dm.h':'Veja como <span class="grad">muda</span> para o seu negócio','dm.lead':'Digite o nome do seu negócio, escolha um ramo e teste cores: assim é um site feito sob medida.',
+'dm.name':'Nome do seu negócio','dm.nameph':'Ex. Doce Esquina','dm.colors':'Teste cores:','dm.note':'✨ Isto é só um exemplo: o seu é desenhado do zero com a sua marca.',
+'dm.nav':['Início','Serviços','Contato'],
+'neg':[
+ {k:'Sorveteria',s:'Sabores, combos e pedidos',h:'Sorvete pedido em 10 segundos',p:'Sabores do dia, combos e pedidos direto pelo WhatsApp.',b:'Ver sabores',f:['Sabores','Combos','Pedidos']},
+ {k:'Restaurante',s:'Cardápio, reservas e pedidos',h:'Uma mesa reservada em poucos cliques',p:'Cardápio digital, reservas online e pedidos para viagem.',b:'Reservar mesa',f:['Cardápio com fotos','Reservas','Entregas']},
+ {k:'Loja',s:'Catálogo e pagamentos online',h:'Sua loja aberta 24 horas',p:'Catálogo atraente, carrinho e pagamentos seguros para vender sem parar.',b:'Ver coleção',f:['Catálogo','Carrinho','Pagamentos']},
+ {k:'Clínica',s:'Consultas e atendimento',h:'Agende sua consulta sem filas',p:'Agenda online, tratamentos e contato imediato.',b:'Agendar consulta',f:['Agenda online','Tratamentos','Localização']},
+ {k:'Academia',s:'Planos e mensalidades',h:'Transforme visitantes em alunos',p:'Planos, horários das aulas e matrícula direto do celular.',b:'Matricular-me',f:['Planos','Horários','Matrícula']}],
+'pr.tag':'Como trabalhamos','pr.h':'Da ideia ao seu site <span class="grad">em 4 passos</span>',
+'pr.list':[['Ouvimos você','Conversamos sobre seu negócio, seus clientes e suas metas.'],['Desenhamos','Mostramos uma proposta visual feita para você.'],['Construímos','Desenvolvemos, testamos e ajustamos com você.'],['Publicamos e cuidamos','Lançamos e ficamos para mantê-lo sempre atualizado.']],
+'pl.tag':'Pacotes','pl.h':'Escolha o pacote <span class="grad">que combina com você</span>','pl.lead':'Três opções com pagamento mensal. Tudo inclui design personalizado, hospedagem e suporte.',
+'pl.mo':'/mês','pl.pick':'Escolher este pacote','pl.badge':'Mais escolhido','pl.fine':'Preços mensais em USD.',
+'pl.list':[
+ {e:'📄',n:'Informativo',d:'Para que seu negócio tenha um site profissional e seja encontrado na internet.',f:['Site informativo sob medida','Design com suas cores e sua marca','Hospedagem, domínio e certificado SSL','Backups e atualizações','Suporte por WhatsApp']},
+ {e:'💬',n:'Interativo',d:'Seu site conversa com seus clientes e conecta direto ao seu WhatsApp.',f:['Tudo do pacote Informativo','Botão de WhatsApp em todo o site','Formulários que enviam mensagens ao seu WhatsApp','Animações e interação com o cliente','Alterações de conteúdo incluídas']},
+ {e:'🚀',n:'Completo',d:'Tudo o que você precisa para vender e crescer, sem limite de funções.',f:['Tudo do pacote Interativo','Reservas, pagamentos online e catálogo','Vários idiomas e funções sob medida','Tudo o que seu negócio precisar','Suporte prioritário']}],
+'qz.h':'Não sabe qual escolher?','qz.lead':'Marque o que você precisa e recomendamos um pacote.',
+'qz.needs':['Mostrar meu negócio e informações','Botão e mensagens por WhatsApp','Reservas ou consultas online','Pagamentos online','Catálogo ou loja','Vários idiomas','Funções sob medida'],
+'qz.none':'Marque o que você precisa e mostramos o pacote ideal.','qz.rec':'Recomendamos o pacote','qz.btn':'Quero este pacote',
+'fq.tag':'Dúvidas frequentes','fq.h':'Perguntas <span class="grad">comuns</span>',
+'fq.list':[['Por que dizem que meu site é personalizado?','Porque não partimos de um modelo genérico. Primeiro entendemos como seu negócio funciona e, a partir disso, desenhamos estrutura, cores, mensagens e funções. Experimente o botão «Personalize» desta página.'],['Quanto custa?','Temos três pacotes mensais: Informativo por USD 30, Interativo por USD 40 e Completo por USD 50. Todos incluem design personalizado, hospedagem e suporte.'],['O que inclui a manutenção?','Hospedagem, domínio, certificado de segurança, backups e atualizações técnicas, além de suporte por WhatsApp.'],['Quanto tempo leva para ficar pronto?','O primeiro rascunho sai em cerca de uma semana. O prazo total depende do pacote, mas sempre damos datas desde o início.'],['Posso trocar de pacote depois?','Sim. Comece com o Informativo e suba para o Interativo ou o Completo quando seu negócio precisar.']],
+'ct.tag':'Vamos conversar','ct.h':'Conte sobre seu negócio e enviamos <span class="grad">uma proposta</span>','ct.p1':'Orçamento sem compromisso','ct.p2':'Resposta em menos de 24 horas','ct.p3':'Primeiro rascunho em uma semana',
+'ct.name':'Seu nome','ct.biz':'Nome do seu negócio','ct.msg':'O que você gostaria que seu site fizesse?','ct.send':'Enviar pelo WhatsApp →','ct.other':'Outro','ct.unsure':'Ainda não sei qual pacote','ct.pkg':'Pacote',
+'msg.t':'Olá Sonetix, sou {n}{b} ({tp}). Tenho interesse em: {pk}. {m}','msg.name':'[seu nome]','msg.def':'Quero um orçamento para um site.',
+'ft.r':'Sites sob medida.','ft.m':'Feito com ♥ para negócios que querem crescer',
+'pn.t':'Personalize esta página','pn.s':'Assim adaptamos o site de cada cliente à sua marca. Teste e veja mudar ao vivo.','pn.col':'Cores','pn.pri':'Principal','pn.sec':'Secundária','pn.rand':'Surpreenda-me','pn.mode':'Modo','pn.dark':'🌙 Escuro','pn.light':'☀️ Claro','pn.font':'Tipo de letra','pn.size':'Tamanho','pn.shape':'Forma','pn.sq':'Reta','pn.soft':'Suave','pn.round':'Redonda','pn.anim':'Animações','pn.on':'Ativas','pn.off':'Desligadas','pn.reset':'↺ Restaurar','pn.f':['Moderna','Elegante','Amigável','Técnica'],
+'to.wa':'Abrindo o WhatsApp…','to.pk':'Pacote selecionado','to.reset':'Restaurado','to.cl':'Cores aplicadas'
+},
+fr:{
+'meta.title':'Sonetix · Sites web sur mesure',
+'nav.serv':'Services','nav.demo':'Essayez','nav.proc':'Processus','nav.plans':'Formules','nav.faq':'Questions','nav.cta':'Devis','nav.pers':'Personnalisez',
+'hero.pill':'Places ouvertes ce mois-ci','hero.h1a':'Des sites web faits','hero.h1b':'sur mesure pour votre',
+'hero.words':['glacier','restaurant','boutique','cabinet','entreprise'],
+'hero.lead':'Pas de modèles génériques. Nous concevons votre site selon le fonctionnement de votre activité et nous le gardons en vie : hébergement, modifications, sécurité et assistance inclus.',
+'hero.c1':'Voir les formules →','hero.c2':'▶ Voir comment il s’adapte',
+'st.1':'Design personnalisé','st.2':'Première maquette prête','st.3':'Objectif de disponibilité','st.4':'Réponse aux modifications','u.d':' jours','u.h':' h',
+'sv.tag':'Ce que nous faisons','sv.h':'Nous créons <span class="grad">et entretenons</span> votre présence en ligne','sv.lead':'Un site ne s’arrête pas le jour de sa mise en ligne. Nous vous accompagnons avant, pendant et après le lancement.',
+'sv.list':[['🎨','Design 100 % personnalisé','Votre identité, vos couleurs, votre façon de vendre. Essayez le bouton « Personnalisez » : c’est ainsi que nous adaptons le site à chaque client.'],['⚙️','Adapté à votre activité','Réservations, catalogue, paiements, formulaires ou WhatsApp. Nous intégrons exactement ce dont votre activité a besoin.'],['📱','Rapide, sur tous les écrans','Agréable sur mobile, tablette et ordinateur. Optimisé pour charger vite et apparaître sur Google.'],['🛡️','Maintenance mensuelle','Hébergement, domaine, certificat SSL, sauvegardes et mises à jour. Vous vendez, nous veillons à ce que tout fonctionne.'],['✏️','Modifications à la demande','Nouveau prix, nouvelle promo, nouvelle section. Demandez, nous publions, sans apprendre à coder.'],['📈','Pensé pour attirer des clients','Appels à l’action clairs et améliorations continues pour que votre site vende, au lieu d’être une simple carte de visite.']],
+'dm.tag':'Interactif','dm.h':'Voyez comme il <span class="grad">change</span> selon votre activité','dm.lead':'Saisissez le nom de votre entreprise, choisissez un secteur et testez des couleurs : voici un site fait sur mesure.',
+'dm.name':'Nom de votre entreprise','dm.nameph':'Ex. Douce Esquina','dm.colors':'Testez des couleurs :','dm.note':'✨ Ceci n’est qu’un exemple : le vôtre est conçu de zéro avec votre marque.',
+'dm.nav':['Accueil','Services','Contact'],
+'neg':[
+ {k:'Glacier',s:'Parfums, formules et commandes',h:'Des glaces commandées en 10 secondes',p:'Parfums du jour, formules et commandes directes par WhatsApp.',b:'Voir les parfums',f:['Parfums','Formules','Commandes']},
+ {k:'Restaurant',s:'Menu, réservations et commandes',h:'Une table réservée en quelques clics',p:'Menu numérique, réservations en ligne et plats à emporter.',b:'Réserver une table',f:['Menu en photos','Réservations','Livraison']},
+ {k:'Boutique',s:'Catalogue et paiements en ligne',h:'Votre boutique ouverte 24 h/24',p:'Catalogue attrayant, panier et paiements sécurisés pour vendre sans arrêt.',b:'Voir la collection',f:['Catalogue','Panier','Paiements']},
+ {k:'Cabinet',s:'Rendez-vous et suivi des patients',h:'Prenez rendez-vous sans faire la queue',p:'Agenda en ligne, soins et contact immédiat.',b:'Prendre rendez-vous',f:['Agenda en ligne','Soins','Adresse']},
+ {k:'Salle de sport',s:'Formules et abonnements',h:'Transformez les visiteurs en membres',p:'Formules, horaires des cours et inscription depuis le mobile.',b:'M’inscrire',f:['Formules','Horaires','Inscription']}],
+'pr.tag':'Notre méthode','pr.h':'De l’idée à votre site <span class="grad">en 4 étapes</span>',
+'pr.list':[['Nous vous écoutons','Nous parlons de votre activité, de vos clients et de vos objectifs.'],['Nous concevons','Nous vous présentons une proposition visuelle faite pour vous.'],['Nous construisons','Nous développons, testons et ajustons avec vous.'],['Nous publions et entretenons','Nous lançons et restons pour le garder à jour.']],
+'pl.tag':'Formules','pl.h':'Choisissez la formule <span class="grad">qui vous convient</span>','pl.lead':'Trois options avec paiement mensuel. Toutes incluent design personnalisé, hébergement et assistance.',
+'pl.mo':'/mois','pl.pick':'Choisir cette formule','pl.badge':'La plus choisie','pl.fine':'Prix mensuels en USD.',
+'pl.list':[
+ {e:'📄',n:'Informative',d:'Pour que votre activité ait un site professionnel et soit visible sur internet.',f:['Site informatif sur mesure','Design à vos couleurs et à votre image','Hébergement, domaine et certificat SSL','Sauvegardes et mises à jour','Assistance par WhatsApp']},
+ {e:'💬',n:'Interactive',d:'Votre site dialogue avec vos clients et se connecte directement à votre WhatsApp.',f:['Tout ce qu’inclut la formule Informative','Bouton WhatsApp sur tout le site','Formulaires qui envoient des messages à votre WhatsApp','Animations et interaction avec le client','Modifications de contenu incluses']},
+ {e:'🚀',n:'Complète',d:'Tout ce qu’il faut pour vendre et grandir, sans limite de fonctionnalités.',f:['Tout ce qu’inclut la formule Interactive','Réservations, paiements en ligne et catalogue','Plusieurs langues et fonctions sur mesure','Tout ce dont votre activité a besoin','Assistance prioritaire']}],
+'qz.h':'Vous hésitez ?','qz.lead':'Cochez ce dont vous avez besoin et nous vous recommandons une formule.',
+'qz.needs':['Présenter mon activité et mes infos','Bouton et messages WhatsApp','Réservations ou rendez-vous en ligne','Paiements en ligne','Catalogue ou boutique','Plusieurs langues','Fonctions sur mesure'],
+'qz.none':'Cochez ce dont vous avez besoin et nous vous montrons la formule idéale.','qz.rec':'Nous vous recommandons la formule','qz.btn':'Je veux cette formule',
+'fq.tag':'Questions fréquentes','fq.h':'Questions <span class="grad">courantes</span>',
+'fq.list':[['Pourquoi dites-vous que mon site est personnalisé ?','Parce que nous ne partons pas d’un modèle générique. Nous comprenons d’abord le fonctionnement de votre activité, puis nous concevons structure, couleurs, messages et fonctions. Essayez le bouton « Personnalisez » de cette page.'],['Combien ça coûte ?','Nous proposons trois formules mensuelles : Informative à 30 USD, Interactive à 40 USD et Complète à 50 USD. Chacune inclut design personnalisé, hébergement et assistance.'],['Que comprend la maintenance ?','Hébergement, domaine, certificat de sécurité, sauvegardes et mises à jour techniques, ainsi que l’assistance par WhatsApp.'],['Combien de temps avant qu’il soit prêt ?','Vous voyez une première maquette en environ une semaine. Le délai total dépend de la formule, mais nous donnons toujours des dates dès le départ.'],['Puis-je changer de formule plus tard ?','Oui. Commencez par l’Informative et passez à l’Interactive ou à la Complète quand votre activité le demande.']],
+'ct.tag':'Parlons-en','ct.h':'Parlez-nous de votre activité et nous vous envoyons <span class="grad">une proposition</span>','ct.p1':'Devis sans engagement','ct.p2':'Réponse sous 24 heures','ct.p3':'Première maquette en une semaine',
+'ct.name':'Votre nom','ct.biz':'Nom de votre entreprise','ct.msg':'Que souhaitez-vous que votre site fasse ?','ct.send':'Envoyer via WhatsApp →','ct.other':'Autre','ct.unsure':'Je ne sais pas encore','ct.pkg':'Formule',
+'msg.t':'Bonjour Sonetix, je suis {n}{b} ({tp}). Je suis intéressé(e) par : {pk}. {m}','msg.name':'[votre nom]','msg.def':'Je souhaite un devis pour un site web.',
+'ft.r':'Sites web sur mesure.','ft.m':'Fait avec ♥ pour les entreprises qui veulent grandir',
+'pn.t':'Personnalisez cette page','pn.s':'C’est ainsi que nous adaptons le site de chaque client à sa marque. Essayez et voyez le changement en direct.','pn.col':'Couleurs','pn.pri':'Principale','pn.sec':'Secondaire','pn.rand':'Surprenez-moi','pn.mode':'Mode','pn.dark':'🌙 Sombre','pn.light':'☀️ Clair','pn.font':'Police','pn.size':'Taille','pn.shape':'Forme','pn.sq':'Droite','pn.soft':'Douce','pn.round':'Ronde','pn.anim':'Animations','pn.on':'Activées','pn.off':'Désactivées','pn.reset':'↺ Réinitialiser','pn.f':['Moderne','Élégante','Amicale','Technique'],
+'to.wa':'Ouverture de WhatsApp…','to.pk':'Formule sélectionnée','to.reset':'Réinitialisé','to.cl':'Couleurs appliquées'
+}
+};
+/* ========================================================== */
 
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
-$$('[data-brand]').forEach(e=>e.textContent=CONFIG.marca);
-$('#yr').textContent=new Date().getFullYear();
-$('#wa').href='https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent('Hola, quiero cotizar una página web para mi negocio.');
-const toast=(()=>{let t;return m=>{const e=$('#toast');e.textContent=m;e.classList.add('show');clearTimeout(t);t=setTimeout(()=>e.classList.remove('show'),2600)}})();
-
-/* ---- tema rojo / violeta ---- */
 const root=document.documentElement;
-let AR='225,29,72',BR='255,122,69';
-function leerColores(){const s=getComputedStyle(root);AR=s.getPropertyValue('--ar').trim();BR=s.getPropertyValue('--br').trim()}
-function aplicarTema(t,guardar){
-  root.dataset.tema=t;$('#temaT').textContent=t==='rojo'?'Rojo':'Violeta';leerColores();
-  if(guardar){try{localStorage.setItem('sx-tema',t)}catch(e){}}
-  if(window.repintarDemo)window.repintarDemo();
-}
-(()=>{let t=CONFIG.temaInicial;try{t=localStorage.getItem('sx-tema')||t}catch(e){}
-  aplicarTema(t,false);
-  $('#tema').onclick=()=>{aplicarTema(root.dataset.tema==='rojo'?'violeta':'rojo',true)}})();
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let LANG='es';
+const t=k=>(T[LANG]&&T[LANG][k]!==undefined)?T[LANG][k]:T.es[k];
+const toast=(()=>{let h;return m=>{const e=$('#toast');e.textContent=m;e.classList.add('show');clearTimeout(h);h=setTimeout(()=>e.classList.remove('show'),2600)}})();
 
-/* nav + progreso + brillo del cursor */
+const PRESETS=[['#e11d2e','#ff4d4d'],['#7c5cff','#22d3ee'],['#2563eb','#06b6d4'],['#16a34a','#a3e635'],['#f97316','#facc15'],['#ec4899','#8b5cf6'],['#0d9488','#38bdf8'],['#b45309','#fbbf24']];
+const FONTS={moderna:["'Space Grotesk',Inter,sans-serif","Inter,system-ui,sans-serif"],elegante:["'Playfair Display',Georgia,serif","Lora,Georgia,serif"],amigable:["Poppins,system-ui,sans-serif","Nunito,system-ui,sans-serif"],tecnica:["'Space Mono',monospace","'Space Mono',monospace"]};
+const FKEYS=Object.keys(FONTS);
+const SHAPES={sq:['6px','6px'],soft:['14px','12px'],round:['20px','999px']};
+const NEG_E=[['🍦','🍨'],['🍽️','🍝'],['🛍️','👟'],['🩺','🦷'],['💪','🏋️']];
+
+/* ---------- estado y color ---------- */
+let S={...CONFIG.inicial};
+try{const g=JSON.parse(localStorage.getItem('sx-estado2')||'null');if(g)S={...S,...g}}catch(e){}
+const save=()=>{try{localStorage.setItem('sx-estado2',JSON.stringify(S))}catch(e){}};
+const hex2rgb=h=>{h=h.replace('#','');return [0,2,4].map(i=>parseInt(h.substr(i,2),16))};
+const lum=h=>{const [r,g,b]=hex2rgb(h).map(v=>{v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)});return .2126*r+.7152*g+.0722*b};
+function hsl2hex(h,s,l){s/=100;l/=100;const k=n=>(n+h/30)%12,a=s*Math.min(l,1-l),f=n=>l-a*Math.max(-1,Math.min(k(n)-3,Math.min(9-k(n),1)));return '#'+[f(0),f(8),f(4)].map(x=>Math.round(x*255).toString(16).padStart(2,'0')).join('')}
+let AR='225,29,46',BR='255,77,77';
+function aplicar(){
+  root.style.setProperty('--a',S.a);root.style.setProperty('--b',S.b);
+  root.style.setProperty('--on',(lum(S.a)+lum(S.b))/2>.45?'#15121a':'#ffffff');
+  AR=hex2rgb(S.a).join(',');BR=hex2rgb(S.b).join(',');
+  root.dataset.modo=S.modo;root.dataset.anim=S.anim;
+  const f=FONTS[S.fuente]||FONTS.moderna;root.style.setProperty('--fh',f[0]);root.style.setProperty('--fb',f[1]);
+  root.style.setProperty('--fs',S.tam/100);
+  const sh=SHAPES[S.forma]||SHAPES.round;root.style.setProperty('--r',sh[0]);root.style.setProperty('--rb',sh[1]);
+  $('#c1').value=S.a;$('#c2').value=S.b;$('#fszv').textContent=S.tam+'%';$('#fsz').value=S.tam;
+  $$('#sws .sw,#qsw .sw').forEach(b=>b.setAttribute('aria-pressed',b.dataset.a===S.a&&b.dataset.b===S.b));
+  $$('#segMode button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===S.modo));
+  $$('#segShape button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===S.forma));
+  $$('#segAnim button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===S.anim));
+  $$('#fonts button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===S.fuente));
+  save();
+}
+
+/* ---------- idioma ---------- */
+function setIdioma(l,guardar){
+  if(!T[l])l='es';LANG=l;S.idioma=l;root.lang=l;$('#lang').value=l;
+  document.title=t('meta.title');
+  $$('[data-t]').forEach(e=>e.innerHTML=t(e.dataset.t));
+  $$('[data-tp]').forEach(e=>e.placeholder=t(e.dataset.tp));
+  $$('[data-brand]').forEach(e=>e.textContent=CONFIG.marca);
+  renderSvcs();renderSteps();renderPlans();renderFaq();renderNeeds();renderRes();renderDemoOpts();renderSelects();paintDemo(false);chat();
+  $$('[data-n]').forEach(n=>{if(n.closest('.rv.in'))setCount(n,+n.dataset.n)});
+  renderFontsPanel();renderTyped(true);
+  if(guardar)save();
+}
+function setCount(n,v){const u=n.dataset.u;const unit=u&&u.startsWith('u.')?t(u):(u||'');n.textContent=(n.dataset.n.includes('.')?v.toFixed(1).replace('.',','):Math.round(v))+unit}
+
+/* ---------- render dinámico ---------- */
+function renderSvcs(){$('#svcs').innerHTML=t('sv.list').map(s=>`<div class="card rv in"><div class="ico">${s[0]}</div><h3>${s[1]}</h3><p>${s[2]}</p></div>`).join('');bindTilt()}
+function renderSteps(){$('#steps').innerHTML=t('pr.list').map((s,i)=>`<div class="step rv in"><div class="num">${i+1}</div><h3>${s[0]}</h3><p>${s[1]}</p></div>`).join('');onScroll()}
+let REC=-1;
+function renderPlans(){
+  $('#plans').innerHTML=t('pl.list').map((p,i)=>`<div class="plan ${i===1?'hot':''} ${REC===i?'rec':''}" data-i="${i}">${i===1?`<div class="badge">${t('pl.badge')}</div>`:''}
+   <div class="pe">${p.e}</div><h3>${p.n}</h3><div class="d">${p.d}</div>
+   <div class="price">$${CONFIG.precios[i]}<small> ${CONFIG.moneda}${t('pl.mo')}</small></div>
+   <ul>${p.f.map(x=>`<li>${x}</li>`).join('')}</ul>
+   <button class="btn ${i===1?'p':'g'}" data-pick="${i}">${t('pl.pick')}</button></div>`).join('');
+}
+function renderFaq(){const l=$('#faq-list');l.innerHTML=t('fq.list').map(f=>`<div class="qa"><button>${f[0]}<span>+</span></button><div>${f[1]}</div></div>`).join('');
+  $$('.qa',l).forEach(q=>q.firstElementChild.onclick=()=>{const on=q.classList.contains('on');
+    $$('.qa',l).forEach(x=>{x.classList.remove('on');x.lastElementChild.style.maxHeight=0});
+    if(!on){q.classList.add('on');q.lastElementChild.style.maxHeight=q.lastElementChild.scrollHeight+30+'px'}})}
+const TIER=[0,1,2,2,2,2,2];const NEEDS=new Set();
+function renderNeeds(){$('#needs').innerHTML=t('qz.needs').map((n,i)=>`<label class="need ${NEEDS.has(i)?'on':''}" data-i="${i}"><input type="checkbox" ${NEEDS.has(i)?'checked':''}><i>${NEEDS.has(i)?'✓':''}</i>${n}</label>`).join('')}
+function renderRes(){
+  const box=$('#res');
+  if(!NEEDS.size){REC=-1;box.innerHTML=`<div style="font-size:3rem">🤔</div><p>${t('qz.none')}</p>`}
+  else{REC=Math.max(...[...NEEDS].map(i=>TIER[i]));const p=t('pl.list')[REC];
+    box.innerHTML=`<div style="font-size:3rem">${p.e}</div><p>${t('qz.rec')}</p><div class="big grad">${p.n}</div><p><b style="color:var(--txt)">$${CONFIG.precios[REC]} ${CONFIG.moneda}</b> ${t('pl.mo')}</p><button class="btn p" data-pick="${REC}">${t('qz.btn')}</button>`}
+  $$('#plans .plan').forEach((c,i)=>c.classList.toggle('rec',i===REC));
+}
+function renderSelects(){
+  const tp=$('#f-t'),pk=$('#f-p'),a=tp.selectedIndex,b=pk.selectedIndex;
+  tp.innerHTML=t('neg').map(n=>`<option>${n.k}</option>`).join('')+`<option>${t('ct.other')}</option>`;
+  pk.innerHTML=t('pl.list').map((p,i)=>`<option value="${i}">${t('ct.pkg')} ${p.n} · $${CONFIG.precios[i]} ${CONFIG.moneda}${t('pl.mo')}</option>`).join('')+`<option value="-1">${t('ct.unsure')}</option>`;
+  tp.selectedIndex=a<0?0:a;pk.selectedIndex=b<0?1:b;
+}
+function renderFontsPanel(){const nm=t('pn.f');$('#fonts').innerHTML=FKEYS.map((k,i)=>`<button data-v="${k}" aria-pressed="${S.fuente===k}"><b style="font-family:${FONTS[k][0]}">Aa</b><small>${nm[i]}</small></button>`).join('')}
+
+/* ---------- demo ---------- */
+let curNeg=0;
+function renderDemoOpts(){$('#opts').innerHTML=t('neg').map((n,i)=>`<button class="opt ${i===curNeg?'on':''}" data-i="${i}"><em>${NEG_E[i][0]}</em><div><strong>${n.k}</strong><small>${n.s}</small></div></button>`).join('')}
+function paintDemo(anim){
+  const n=t('neg')[curNeg],e=NEG_E[curNeg],name=$('#dname').value.trim();
+  const brand=name||n.k;
+  $$('#opts .opt').forEach((b,i)=>b.classList.toggle('on',i===curNeg));
+  $('#url').textContent='🔒 '+(name?name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'tu-negocio':'tu-negocio')+'.com';
+  const nv=t('dm.nav');
+  $('#site').innerHTML=`<div class="${anim?'fade':''}"><div class="s-nav"><b>${esc(brand)}</b><span><i style="font-style:normal">${nv[0]}</i><i style="font-style:normal">${nv[1]}</i><i style="font-style:normal">${nv[2]}</i></span></div>
+  <div class="s-hero"><div><h4>${n.h}</h4><p>${n.p}</p><span class="s-btn">${n.b} →</span></div><div class="s-img">${e[1]}</div></div>
+  <div class="s-feat">${n.f.map(x=>`<div>${x}</div>`).join('')}</div></div>`;
+}
+
+/* ---------- chat WhatsApp en vivo ---------- */
+function msg(){
+  const n=$('#f-n').value.trim(),b=$('#f-b').value.trim(),tp=$('#f-t').value;
+  const pi=+$('#f-p').value,pk=pi>=0?`${t('ct.pkg')} ${t('pl.list')[pi].n} ($${CONFIG.precios[pi]} ${CONFIG.moneda}${t('pl.mo')})`:t('ct.unsure');
+  return t('msg.t').replace('{n}',n||t('msg.name')).replace('{b}',b?` · "${b}"`:'').replace('{tp}',tp).replace('{pk}',pk).replace('{m}',$('#f-m').value.trim()||t('msg.def'));
+}
+function chat(){const h=new Date().toLocaleTimeString(LANG,{hour:'2-digit',minute:'2-digit'});
+  $('#chat').innerHTML=`<div class="bub">${esc(msg())}<span class="t">${h} ✓✓</span></div><div class="bub in"><span class="typing"><i></i><i></i><i></i></span></div>`}
+
+/* ---------- texto que se escribe ---------- */
+let typedTimer,tw=0,tc=0,td=false;
+function renderTyped(reset){if(reset){tw=0;tc=0;td=false}clearTimeout(typedTimer);const el=$('#typed');
+  (function step(){const W=t('hero.words'),word=W[tw%W.length];el.textContent=word.slice(0,tc);
+    if(!td&&tc>=word.length){td=true;typedTimer=setTimeout(step,1600);return}
+    if(td&&tc<=0){td=false;tw=(tw+1)%W.length}
+    tc+=td?-1:1;typedTimer=setTimeout(step,td?45:95)})()}
+
+/* ---------- panel ---------- */
+(()=>{
+  const mk=(h,cls)=>PRESETS.map(p=>`<button class="sw" style="--s1:${p[0]};--s2:${p[1]}" data-a="${p[0]}" data-b="${p[1]}" aria-label="${p[0]}" aria-pressed="false"></button>`).join('');
+  $('#sws').innerHTML=mk();$('#qsw').innerHTML=PRESETS.slice(0,6).map(p=>`<button class="sw" style="--s1:${p[0]};--s2:${p[1]};width:26px;height:26px" data-a="${p[0]}" data-b="${p[1]}" aria-label="${p[0]}" aria-pressed="false"></button>`).join('');
+  const setCol=(a,b)=>{S.a=a;S.b=b;aplicar()};
+  document.addEventListener('click',e=>{const s=e.target.closest('.sw');if(s)setCol(s.dataset.a,s.dataset.b)});
+  $('#c1').oninput=e=>{S.a=e.target.value;aplicar()};$('#c2').oninput=e=>{S.b=e.target.value;aplicar()};
+  $('#rand').onclick=()=>{const h=Math.random()*360;setCol(hsl2hex(h,78,50),hsl2hex((h+35+Math.random()*60)%360,88,58))};
+  $('#segMode').onclick=e=>{const b=e.target.closest('button');if(b){S.modo=b.dataset.v;aplicar()}};
+  $('#segShape').onclick=e=>{const b=e.target.closest('button');if(b){S.forma=b.dataset.v;aplicar()}};
+  $('#segAnim').onclick=e=>{const b=e.target.closest('button');if(b){S.anim=b.dataset.v;aplicar()}};
+  $('#fonts').onclick=e=>{const b=e.target.closest('button');if(b){S.fuente=b.dataset.v;aplicar();renderFontsPanel()}};
+  $('#fsz').oninput=e=>{S.tam=+e.target.value;aplicar()};
+  $('#reset').onclick=()=>{const l=LANG;S={...CONFIG.inicial,idioma:l};aplicar();renderFontsPanel();toast(t('to.reset'))};
+  const open=v=>{$('#panel').classList.toggle('open',v);$('#panel').setAttribute('aria-hidden',!v);$('#fabp').classList.remove('hint')};
+  $('#fabp').onclick=()=>open(!$('#panel').classList.contains('open'));
+  $('#pbtn').onclick=()=>{open(true);$('#links').classList.remove('open')};
+  $('#pclose').onclick=()=>open(false);
+  addEventListener('keydown',e=>{if(e.key==='Escape')open(false)});
+  setTimeout(()=>$('#fabp').classList.remove('hint'),9000);
+})();
+
+/* ---------- eventos ---------- */
+$('#lang').onchange=e=>setIdioma(e.target.value,true);
+$('#opts').onclick=e=>{const b=e.target.closest('.opt');if(!b)return;curNeg=+b.dataset.i;clearInterval(autoDemo);paintDemo(true);$('#f-t').selectedIndex=curNeg;chat()};
+$('#dname').oninput=()=>{clearInterval(autoDemo);paintDemo(false)};
+let autoDemo=setInterval(()=>{curNeg=(curNeg+1)%5;paintDemo(true)},4800);
+$('#needs').onclick=e=>{const l=e.target.closest('.need');if(!l)return;e.preventDefault();const i=+l.dataset.i;NEEDS.has(i)?NEEDS.delete(i):NEEDS.add(i);renderNeeds();renderRes()};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-pick]');if(!b)return;const i=+b.dataset.pick;
+  $('#f-p').value=i;chat();toast(t('to.pk')+': '+t('pl.list')[i].n);$('#contacto').scrollIntoView({behavior:'smooth'})});
+['f-n','f-b','f-t','f-p','f-m'].forEach(id=>$('#'+id).addEventListener('input',chat));
+$('#form').onsubmit=e=>{e.preventDefault();open('https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent(msg()),'_blank');toast(t('to.wa'))};
+$('#wa').href='https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent('Hola Sonetix / Hi Sonetix');
+$('#yr').textContent=new Date().getFullYear();
+$('#burger').onclick=()=>$('#links').classList.toggle('open');
+$$('#links a').forEach(a=>a.onclick=()=>$('#links').classList.remove('open'));
+
+/* ---------- scroll, progreso, brillo ---------- */
 const nav=$('#nav'),bar=$('#bar'),glow=$('#glow');
-addEventListener('scroll',()=>{
+function onScroll(){
   nav.classList.toggle('sc',scrollY>20);
   bar.style.width=(scrollY/Math.max(1,document.body.scrollHeight-innerHeight)*100)+'%';
   const st=$('#steps').getBoundingClientRect();
   const p=Math.min(1,Math.max(0,(innerHeight*.75-st.top)/st.height));
   $('#steps').style.setProperty('--prog',(p*100)+'%');
   $$('.step').forEach((s,i)=>s.classList.toggle('on',p>i/4+.05));
-},{passive:true});
+}
+addEventListener('scroll',onScroll,{passive:true});
 addEventListener('pointermove',e=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px'},{passive:true});
-$('#burger').onclick=()=>$('#links').classList.toggle('open');
-$$('#links a').forEach(a=>a.onclick=()=>$('#links').classList.remove('open'));
+(()=>{const w=$('#wave');for(let i=0;i<42;i++){const b=document.createElement('b');b.style.animationDelay=(i*0.07)+'s';b.style.animationDuration=(1+Math.abs(Math.sin(i))*.9)+'s';w.appendChild(b)}})();
 
-/* texto que se escribe */
-(()=>{const el=$('#typed');let w=0,c=0,del=false;
-  (function t(){const word=CONFIG.palabras[w];
-    el.textContent=word.slice(0,c);
-    if(!del&&c===word.length){del=true;return setTimeout(t,1600)}
-    if(del&&c===0){del=false;w=(w+1)%CONFIG.palabras.length}
-    c+=del?-1:1;setTimeout(t,del?45:95)})();})();
-
-/* ondas */
-(()=>{const w=$('#wave');for(let i=0;i<42;i++){const b=document.createElement('b');
-  b.style.animationDelay=(i*0.07)+'s';b.style.animationDuration=(1+Math.abs(Math.sin(i))*.9)+'s';w.appendChild(b)}})();
-
-/* red de partículas reactiva al mouse */
+/* red de partículas */
 (()=>{const cv=$('#net'),x=cv.getContext('2d');let W,H,P=[],m={x:-999,y:-999};
-  const rs=()=>{W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight;
-    P=Array.from({length:Math.min(110,W/12|0)},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4}))};
+  const rs=()=>{W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight;P=Array.from({length:Math.min(110,W/12|0)},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4}))};
   rs();addEventListener('resize',rs);
   cv.parentElement.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();m.x=e.clientX-r.left;m.y=e.clientY-r.top});
   cv.parentElement.addEventListener('pointerleave',()=>m.x=m.y=-999);
-  (function f(){x.clearRect(0,0,W,H);
-    for(const p of P){
-      const dx=p.x-m.x,dy=p.y-m.y,d=Math.hypot(dx,dy);
-      if(d<140){p.x+=dx/d*1.6;p.y+=dy/d*1.6}
-      p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+  (function f(){x.clearRect(0,0,W,H);const off=S.anim==='off';
+    for(const p of P){const dx=p.x-m.x,dy=p.y-m.y,d=Math.hypot(dx,dy);
+      if(!off){if(d<140){p.x+=dx/d*1.6;p.y+=dy/d*1.6}p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1}
       x.fillStyle=`rgba(${AR},.9)`;x.beginPath();x.arc(p.x,p.y,1.8,0,7);x.fill()}
-    for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){
-      const d=Math.hypot(P[i].x-P[j].x,P[i].y-P[j].y);
+    for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){const d=Math.hypot(P[i].x-P[j].x,P[i].y-P[j].y);
       if(d<130){x.strokeStyle=`rgba(${AR},${.3*(1-d/130)})`;x.beginPath();x.moveTo(P[i].x,P[i].y);x.lineTo(P[j].x,P[j].y);x.stroke()}}
-    for(const p of P){const d=Math.hypot(p.x-m.x,p.y-m.y);
-      if(d<170){x.strokeStyle=`rgba(${BR},${.6*(1-d/170)})`;x.beginPath();x.moveTo(p.x,p.y);x.lineTo(m.x,m.y);x.stroke()}}
+    if(!off)for(const p of P){const d=Math.hypot(p.x-m.x,p.y-m.y);if(d<170){x.strokeStyle=`rgba(${BR},${.6*(1-d/170)})`;x.beginPath();x.moveTo(p.x,p.y);x.lineTo(m.x,m.y);x.stroke()}}
     requestAnimationFrame(f)})();})();
 
-/* aparecer al hacer scroll + contadores */
+/* revelar al hacer scroll + contadores */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('in');io.unobserve(e.target);
-  $$('[data-n]',e.target).forEach(n=>{const to=+n.dataset.n,s=n.dataset.s,t0=performance.now();
-    (function u(t){const p=Math.min(1,(t-t0)/1500),v=to*(1-Math.pow(1-p,3));
-      n.textContent=(to%1?v.toFixed(1).replace('.',','):Math.round(v))+s;if(p<1)requestAnimationFrame(u)})(t0)})
+  $$('[data-n]',e.target).forEach(n=>{const to=+n.dataset.n,t0=performance.now();(function u(tt){const p=Math.min(1,(tt-t0)/1500);setCount(n,to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(u)})(t0)})
 }),{threshold:.15});
 $$('.rv').forEach((e,i)=>{e.style.transitionDelay=(i%3)*.1+'s';io.observe(e)});
 
-/* tarjetas con inclinación 3D y luz */
-$$('.card').forEach(c=>{
+/* inclinación 3D */
+function bindTilt(){$$('.card:not([data-tilt])').forEach(c=>{c.dataset.tilt=1;
   c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect(),px=(e.clientX-r.left)/r.width,py=(e.clientY-r.top)/r.height;
     c.style.setProperty('--mx',px*100+'%');c.style.setProperty('--my',py*100+'%');
+    if(c.classList.contains('quiz'))return;
     c.style.transform=`perspective(800px) rotateX(${(.5-py)*8}deg) rotateY(${(px-.5)*8}deg) translateY(-4px)`});
-  c.addEventListener('pointerleave',()=>c.style.transform='')});
+  c.addEventListener('pointerleave',()=>c.style.transform='')})}
 
-/* configurador: cada negocio tiene color en tema rojo (r) y en violeta (c) */
-const NEG=[
- {k:'Heladería',s:'Sabores, combos y pedidos',e:'🍦',c:'#ff4fd8',r:'#ff5c7a',bg:'#130d14',rb:'#160d11',u:'tu-heladeria.com',h:'Helados que se piden en 10 segundos',p:'Sabores del día, combos y pedidos directos por WhatsApp.',b:'Ver sabores',i:'🍨',f:['Sabores','Combos','Pedidos']},
- {k:'Restaurante',s:'Menú, reservas y pedidos',e:'🍽️',c:'#ff7a3d',r:'#ff7a3d',bg:'#14100d',rb:'#150f0c',u:'tu-restaurante.com',h:'Una mesa reservada en un par de clics',p:'Menú digital, reservas online y pedidos para llevar.',b:'Reservar mesa',i:'🍝',f:['Menú con fotos','Reservas','Domicilios']},
- {k:'Tienda',s:'Catálogo y pagos online',e:'🛍️',c:'#ff4fd8',r:'#ff2d55',bg:'#130d14',rb:'#150b0f',u:'tu-tienda.com',h:'Tu tienda abierta las 24 horas',p:'Catálogo atractivo, carrito y pagos seguros para vender sin parar.',b:'Ver colección',i:'👟',f:['Catálogo','Carrito','Pagos']},
- {k:'Consultorio',s:'Citas y atención al paciente',e:'🩺',c:'#22d3ee',r:'#ff8f6b',bg:'#0b1316',rb:'#160e0d',u:'tu-consultorio.com',h:'Agenda tu cita sin hacer filas',p:'Agenda en línea, información de tratamientos y contacto inmediato.',b:'Agendar cita',i:'🦷',f:['Agenda online','Tratamientos','Ubicación']},
- {k:'Gimnasio',s:'Planes y membresías',e:'💪',c:'#a3e635',r:'#e11d48',bg:'#0f130b',rb:'#150a0d',u:'tu-gimnasio.com',h:'Convierte visitantes en miembros',p:'Planes, horarios de clases e inscripción directa desde el celular.',b:'Inscribirme',i:'🏋️',f:['Planes','Horarios','Inscripción']},
- {k:'Servicios profesionales',s:'Confianza y captación',e:'💼',c:'#7c5cff',r:'#ff6b6b',bg:'#0e0d17',rb:'#150d0f',u:'tu-firma.com',h:'Transmite confianza desde el primer clic',p:'Presenta tu experiencia, casos de éxito y recibe consultas calificadas.',b:'Solicitar asesoría',i:'⚖️',f:['Casos','Equipo','Contacto']}
-];
-(()=>{const o=$('#opts'),site=$('#site'),br=$('#browser');let cur=0;
-  const col=n=>root.dataset.tema==='rojo'?n.r:n.c, bgc=n=>root.dataset.tema==='rojo'?n.rb:n.bg;
-  NEG.forEach((n,i)=>{const b=document.createElement('button');b.className='opt';
-    b.innerHTML=`<em>${n.e}</em><div><strong>${n.k}</strong><small>${n.s}</small></div>`;b.onclick=()=>set(i,true);o.appendChild(b)});
-  function set(i,anim){cur=i;const n=NEG[i];$$('.opt',o).forEach((b,j)=>{b.classList.toggle('on',i===j);b.style.setProperty('--oc',col(NEG[j]))});
-    br.style.setProperty('--ac',col(n));site.style.setProperty('--sbg',bgc(n));site.style.setProperty('--ac',col(n));$('#url').textContent='🔒 '+n.u;
-    site.innerHTML=`<div class="${anim?'fade':''}"><div class="s-nav"><b style="color:${col(n)}">${n.k}</b><span><i style="font-style:normal">Inicio</i><i style="font-style:normal">Servicios</i><i style="font-style:normal">Contacto</i></span></div>
-    <div class="s-hero"><div><h4>${n.h}</h4><p>${n.p}</p><span class="s-btn">${n.b} →</span></div><div class="s-img">${n.i}</div></div>
-    <div class="s-feat">${n.f.map(x=>`<div>${x}</div>`).join('')}</div></div>`}
-  window.repintarDemo=()=>set(cur,false);
-  set(0,false);const auto=setInterval(()=>set((cur+1)%NEG.length,true),4500);
-  o.addEventListener('pointerdown',()=>clearInterval(auto));})();
-
-/* planes */
-(()=>{let mode='m';const box=$('#plans'),fmt=v=>'$'+Math.round(v).toLocaleString('es-CO');
-  function draw(){box.innerHTML=CONFIG.planes.map(p=>{
-    const pr=p.m==null?`<div class="price" style="font-size:2rem">Cotización</div><small style="color:var(--mut)">según tu proyecto</small>`
-      :`<div class="price">${fmt(mode==='m'?p.m:p.m*.8)}<small> /mes${mode==='a'?' · facturado al año':''}</small></div>`;
-    return `<div class="plan ${p.hot?'hot':''}">${p.hot?'<div class="badge">Más elegido</div>':''}<h3>${p.n}</h3><div class="d">${p.d}</div>${pr}
-    <ul>${p.items.map(i=>`<li>${i}</li>`).join('')}</ul><a href="#contacto" class="btn ${p.hot?'p':'g'}">Quiero este plan</a></div>`}).join('')}
-  draw();$$('#toggle button').forEach(b=>b.onclick=()=>{mode=b.dataset.m;$$('#toggle button').forEach(x=>x.classList.toggle('on',x===b));draw()});})();
-
-/* faq */
-(()=>{const l=$('#faq-list');l.innerHTML=CONFIG.faq.map(f=>`<div class="qa"><button>${f[0]}<span>+</span></button><div>${f[1]}</div></div>`).join('');
-  $$('.qa',l).forEach(q=>q.firstElementChild.onclick=()=>{const on=q.classList.contains('on');
-    $$('.qa',l).forEach(x=>{x.classList.remove('on');x.lastElementChild.style.maxHeight=0});
-    if(!on){q.classList.add('on');q.lastElementChild.style.maxHeight=q.lastElementChild.scrollHeight+30+'px'}})})();
-
-/* formulario -> WhatsApp */
-$('#form').onsubmit=e=>{e.preventDefault();
-  const t=`Hola Sonetix, soy ${$('#f-n').value} de "${$('#f-b').value}" (${$('#f-t').value}). ${$('#f-m').value||'Quiero cotizar una página web.'}`;
-  open('https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent(t),'_blank');toast('Abriendo WhatsApp…')};
+/* ---------- arranque ---------- */
+(()=>{aplicar();setIdioma(S.idioma||'es',false);onScroll()})();
 </script>
 </body>
 </html>
