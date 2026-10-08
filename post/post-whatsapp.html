@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Post Sonetix</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1350px;background:#050506}
+body{font-family:'Plus Jakarta Sans','Segoe UI',sans-serif;color:#f6f3f7;position:relative;overflow:hidden}
+.bg{position:absolute;inset:0;background:
+  radial-gradient(900px 700px at 100% -8%,rgba(225,29,46,.38),transparent 62%),
+  radial-gradient(800px 600px at -10% 105%,rgba(255,77,77,.22),transparent 60%),
+  #050506}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:54px 54px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 70%);mask-image:linear-gradient(180deg,#000,transparent 70%)}
+.wrap{position:absolute;inset:0;padding:78px 84px 70px;display:flex;flex-direction:column}
+.top{display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;align-items:center;gap:16px;font-weight:800;font-size:44px;letter-spacing:-.03em}
+.logo i{display:flex;gap:5px;align-items:center;height:46px}
+.logo i b{display:block;width:8px;border-radius:5px;background:linear-gradient(180deg,#ff4d4d,#e11d2e)}
+.logo i b:nth-child(1){height:20px}.logo i b:nth-child(2){height:42px}.logo i b:nth-child(3){height:28px}.logo i b:nth-child(4){height:36px}
+.tag{font-size:22px;letter-spacing:.2em;text-transform:uppercase;color:#ff6b6b;font-weight:700}
+h1{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:90px;line-height:1.04;letter-spacing:-.02em;margin-top:52px}
+h1 em{font-style:italic;font-weight:500;background:linear-gradient(100deg,#ff4d4d,#e11d2e);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:6px}
+.sub{font-size:29px;line-height:1.45;color:#b9b2bd;margin-top:24px;max-width:860px}
+.sub b{color:#f6f3f7;font-weight:600}
+.plans{margin-top:40px;display:grid;gap:14px}
+.plan{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 34px;border:1px solid rgba(255,255,255,.12);border-radius:22px;background:rgba(255,255,255,.035)}
+.plan.hot{border-color:transparent;background:linear-gradient(#17090b,#17090b) padding-box,linear-gradient(110deg,#ff4d4d,#e11d2e) border-box;border:1.5px solid transparent;box-shadow:0 20px 60px -24px rgba(225,29,46,.8)}
+.plan h3{font-size:34px;font-weight:700;letter-spacing:-.02em;display:flex;align-items:center;gap:14px}
+.plan h3 span.b{font-size:17px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:linear-gradient(110deg,#ff4d4d,#e11d2e);color:#fff;padding:5px 14px;border-radius:99px}
+.plan p{font-size:23px;color:#a9a2ae;margin-top:4px}
+.price{font-size:50px;font-weight:800;letter-spacing:-.03em;white-space:nowrap;text-align:right;line-height:1}
+.price small{display:block;font-size:19px;font-weight:500;color:#a9a2ae;letter-spacing:0;margin-top:6px}
+.chips{display:flex;gap:10px;flex-wrap:nowrap;margin-top:28px}
+.chips span{font-size:19px;color:#d9d3dc;padding:9px 16px;white-space:nowrap;border-radius:99px;border:1px solid rgba(255,255,255,.12);font-weight:500}
+.chips span::before{content:"✓";color:#ff4d4d;font-weight:800;margin-right:9px}
+.spacer{flex:1}
+.cta{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:30px 40px;border-radius:26px;background:linear-gradient(110deg,#e11d2e,#ff4d4d);box-shadow:0 24px 70px -22px rgba(225,29,46,.85)}
+.cta .l{font-size:23px;font-weight:600;opacity:.92}
+.cta .n{font-size:56px;font-weight:800;letter-spacing:-.02em;line-height:1.05}
+.cta .w{width:92px;height:92px;border-radius:50%;background:#fff;display:grid;place-items:center;flex-shrink:0}
+.cta .w svg{width:52px;height:52px}
+.eq{position:absolute;left:84px;right:84px;bottom:-4px;height:0}
+</style>
+</head>
+<body>
+<div class="bg"></div><div class="grid"></div>
+<div class="wrap">
+  <div class="top"><div class="logo"><i><b></b><b></b><b></b><b></b></i>Sonetix</div><div class="tag">Páginas web</div></div>
+  <h1>Tu negocio merece una página <em>a tu medida</em></h1>
+  <p class="sub">Diseñamos tu sitio web <b>personalizado</b> y nos encargamos de mantenerlo: hosting, cambios y soporte incluidos.</p>
+  <div class="plans">
+    <div class="plan"><div><h3>Informativa</h3><p>Tu negocio en internet, con tu marca</p></div><div class="price">$30.000<small>COP al mes</small></div></div>
+    <div class="plan hot"><div><h3>Interactiva <span class="b">Más elegida</span></h3><p>Conecta con tu WhatsApp y recibe mensajes</p></div><div class="price">$40.000<small>COP al mes</small></div></div>
+    <div class="plan"><div><h3>Completa</h3><p>Todo lo que tu negocio necesite</p></div><div class="price">$50.000<small>COP al mes</small></div></div>
+  </div>
+  <div class="chips"><span>Diseño 100% personalizado</span><span>Se ve bien en el celular</span><span>Soporte incluido</span></div>
+  <div class="spacer"></div>
+  <div class="cta">
+    <div><div class="l">Cotiza sin compromiso · escríbeme por WhatsApp</div><div class="n">301 775 9082</div></div>
+    <div class="w"><svg viewBox="0 0 24 24" fill="none" stroke="#25d366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/><path d="M9 9.5c.5 2 2.5 4 5 5l1.2-1.2-1.8-1-.8.6c-.8-.4-1.6-1.2-2-2l.6-.8-1-1.8z" fill="#25d366" stroke="none"/></svg></div>
+  </div>
+</div>
+</body>
+</html>

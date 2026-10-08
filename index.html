@@ -151,7 +151,6 @@ select.inp option{background:var(--card);color:var(--txt)}
 .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px;align-items:stretch}
 .plan{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:36px;display:flex;flex-direction:column;position:relative;transition:transform .3s,outline-color .3s,background .5s;outline:2px solid transparent;outline-offset:5px}
 .plan:hover{transform:translateY(-8px)}
-.plan.rec{outline-color:var(--b)}
 .plan.hot{border:1px solid transparent;background:linear-gradient(var(--card),var(--card)) padding-box,var(--grad) border-box;box-shadow:0 30px 80px -30px color-mix(in srgb,var(--a) 65%,transparent)}
 .plan .badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--grad);color:var(--on);padding:4px 16px;border-radius:99px;font-size:.78rem;font-weight:700;white-space:nowrap}
 .plan .pe{font-size:2rem;margin-bottom:8px}
@@ -160,20 +159,14 @@ select.inp option{background:var(--card);color:var(--txt)}
 .price small{font-size:.9rem;font-weight:500;color:var(--mut);font-family:var(--fb)}
 .plan ul{list-style:none;margin:24px 0 30px;display:grid;gap:12px;font-size:.95rem;flex:1}
 .plan li::before{content:"✓";color:var(--b);font-weight:700;margin-right:10px}
+.plans.one{grid-template-columns:minmax(0,520px);justify-content:center}
+.plans.one .plan{text-align:center;align-items:center}
+.plans.one .plan .d{min-height:0;margin:0 0 10px;font-size:1.05rem;letter-spacing:.04em;text-transform:uppercase}
+.plans.one .price{font-size:clamp(3rem,13vw,4.6rem)}
+.plans.one .price small{display:block;margin-top:8px}
+.plans.one .plan ul{text-align:left;justify-self:stretch}
 .fine{color:var(--mut);font-size:.85rem;margin-top:26px;text-align:center}
 
-.quiz{margin-top:56px;display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center}
-.quiz h3{font-size:1.6rem;margin-bottom:6px}
-.needs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
-.need{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:calc(var(--r)*.6);cursor:pointer;font-size:.92rem;background:rgba(var(--fgr),.03);transition:.2s;user-select:none}
-.need:hover{border-color:var(--b)}
-.need.on{border-color:var(--a);background:color-mix(in srgb,var(--a) 14%,transparent)}
-.need input{display:none}
-.need i{width:20px;height:20px;border-radius:6px;border:2px solid var(--mut);display:grid;place-items:center;flex-shrink:0;font-style:normal;font-size:.75rem;color:var(--on);transition:.2s}
-.need.on i{background:var(--grad);border-color:transparent}
-.res{text-align:center;padding:10px}
-.res .big{font-family:var(--fh);font-size:2.4rem;font-weight:700;margin:6px 0}
-.res p{color:var(--mut);margin-bottom:16px}
 
 .faq{max-width:780px;margin:50px auto 0;display:grid;gap:12px}
 .qa{background:var(--card);border:1px solid var(--line);border-radius:calc(var(--r)*.8);overflow:hidden}
@@ -277,7 +270,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
   .grid3,.plans{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}
   .demo{grid-template-columns:minmax(0,1fr)}.opts{overflow-x:auto}.optrow{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px}.optrow .opt{flex:0 0 auto}
   .steps{grid-template-columns:1fr 1fr;row-gap:40px}.steps::before,.steps::after{display:none}
-  .box{grid-template-columns:1fr;padding:34px}.quiz{grid-template-columns:1fr}.needs{grid-template-columns:1fr}
+  .box{grid-template-columns:1fr;padding:34px}
   .links{position:fixed;top:72px;left:0;right:0;background:color-mix(in srgb,var(--bg) 97%,transparent);flex-direction:column;padding:26px;gap:18px;display:none;border-bottom:1px solid var(--line);align-items:flex-start}
   .links.open{display:flex}.burger{display:block}
   .s-hero{grid-template-columns:1fr}.s-img{display:none}
@@ -299,7 +292,6 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
 .tag::after{content:"";display:block;height:2px;width:0;margin:8px 0 0;background:var(--grad);border-radius:2px;transition:width .9s .35s cubic-bezier(.2,.7,.2,1)}
 .center .tag::after{margin:8px auto 0}
 .rv.in .tag::after{width:46px}
-.res>*{animation:fxZoom .4s backwards}
 .eqd{position:absolute;top:-24px;left:0;right:0;height:48px;display:flex;gap:6px;justify-content:center;align-items:flex-end;pointer-events:none;z-index:3}
 .eqd i{width:4px;height:100%;border-radius:3px;background:var(--grad);transform-origin:bottom;transform:scaleY(.06);opacity:.9}
 .eqd.in i{animation:eqi var(--du) ease-in-out infinite alternate backwards;animation-delay:var(--dl)}
@@ -537,15 +529,8 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
 
 <section id="planes" style="background:linear-gradient(180deg,var(--bg),var(--bg2),var(--bg))"><div class="wrap">
   <div class="center rv"><span class="tag" data-t="pl.tag"></span><h2 data-t="pl.h"></h2><p class="lead" data-t="pl.lead"></p></div>
-  <div class="plans stg" id="plans" style="--fxn:fxFlip"></div>
+  <div class="plans one stg" id="plans" style="--fxn:fxFlip"></div>
   <p class="fine" data-t="pl.fine"></p>
-  <div class="quiz card rv" data-fx="flip">
-    <div>
-      <h3 data-t="qz.h"></h3><p class="lead" style="font-size:.95rem" data-t="qz.lead"></p>
-      <div class="needs stg" id="needs" style="--fxn:fxZoom"></div>
-    </div>
-    <div class="res" id="res"></div>
-  </div>
 </div></section>
 
 <section id="faq"><div class="wrap">
@@ -565,7 +550,6 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
       <input class="inp" id="f-n" data-tp="ct.name" required>
       <input class="inp" id="f-b" data-tp="ct.biz" required>
       <select class="inp" id="f-t"></select>
-      <select class="inp" id="f-p"></select>
       <textarea class="inp" id="f-m" data-tp="ct.msg"></textarea>
       <button class="btn p" type="submit" data-t="ct.send"></button>
     </form>
@@ -601,7 +585,7 @@ const CONFIG={
   marca:'Sonetix',
   whatsapp:'573017759082',          // número con código de país, sin + ni espacios
   moneda:'COP',
-  precios:[30000,40000,50000],               // mensual: Informativa, Interactiva, Completa
+  precioDesde:30000,                // mensual: «planes desde»
   inicial:{a:'#e11d2e',b:'#ff4d4d',modo:'oscuro',fuente:'moderna',tam:100,forma:'round',anim:'dyn',idioma:'es'}
 };
 /* ======================================================== */
@@ -610,11 +594,11 @@ const CONFIG={
 const T={
 es:{
 'meta.title':'Sonetix · Páginas web a la medida','nav.home':'Inicio','pn.a1':'Suaves','pn.a2':'Dinámicas','pn.a3':'Apagadas','mq':['Diseño a la medida','Tus colores','Tu marca','WhatsApp directo','Hosting incluido','Soporte real','Se ve bien en el celular','4 idiomas'],
-'nav.serv':'Servicios','nav.demo':'Pruébalo','nav.proc':'Proceso','nav.plans':'Paquetes','nav.faq':'Preguntas','nav.cta':'Cotizar','nav.pers':'Personaliza',
+'nav.serv':'Servicios','nav.demo':'Pruébalo','nav.proc':'Proceso','nav.plans':'Planes','nav.faq':'Preguntas','nav.cta':'Cotizar','nav.pers':'Personaliza',
 'hero.pill':'Cupos abiertos este mes','hero.h1a':'Páginas web hechas','hero.h1b':'a la medida de tu',
 'hero.words':['heladería','restaurante','tienda','consultorio','negocio'],
 'hero.lead':'Nada de plantillas genéricas. Diseñamos tu sitio según cómo trabaja tu negocio y lo mantenemos vivo: hosting, cambios, seguridad y soporte incluidos.',
-'hero.c1':'Ver paquetes →','hero.c2':'▶ Ver cómo se adapta',
+'hero.c1':'Ver planes →','hero.c2':'▶ Ver cómo se adapta',
 'st.1':'Diseño personalizado','st.2':'Primer borrador listo','st.3':'Disponibilidad objetivo','st.4':'Respuesta a cambios','u.d':' días','u.h':' h',
 'sv.tag':'Qué hacemos','sv.h':'Creamos <span class="grad">y cuidamos</span> tu presencia online','sv.lead':'Una web no termina el día que se publica. Te acompañamos antes, durante y después del lanzamiento.',
 'sv.list':[['🎨','Diseño 100% personalizado','Tu identidad, tus colores, tu forma de vender. Mira el botón «Personaliza»: así de fácil adaptamos la web a cada cliente.'],['⚙️','Adaptada a tu operación','Reservas, catálogo, pagos, formularios o WhatsApp. Integramos justo lo que tu negocio necesita y nada de relleno.'],['📱','Rápida y en cualquier pantalla','Se ve y se siente bien en celular, tablet y computador. Optimizada para cargar veloz y aparecer en Google.'],['🛡️','Sostenimiento mensual','Hosting, dominio, certificado SSL, copias de seguridad y actualizaciones. Tú te enfocas en vender, nosotros en que no se caiga.'],['✏️','Cambios cuando los necesites','Nuevo precio, nueva promo, nueva sección. Pídelo y lo publicamos, sin tener que aprender código.'],['📈','Pensada para generar clientes','Llamados a la acción claros y mejoras continuas para que tu web venda y no sea solo una tarjeta.']],
@@ -632,23 +616,16 @@ es:{
 'neg.st':['Colorida y animada','Elegante: negro y dorado','Minimalista: blanco y negro','Limpia y confiable','Enérgica y deportiva','Editorial y sobria'],
 'pr.tag':'Cómo trabajamos','pr.h':'De la idea a tu web <span class="grad">en 4 pasos</span>',
 'pr.list':[['Te escuchamos','Conversamos sobre tu negocio, tus clientes y tus metas.'],['Diseñamos','Te mostramos una propuesta visual hecha para ti.'],['Construimos','Desarrollamos, probamos y ajustamos contigo.'],['Publicamos y cuidamos','Lanzamos y nos quedamos para mantenerla al día.']],
-'pl.tag':'Paquetes','pl.h':'Elige el paquete <span class="grad">que va contigo</span>','pl.lead':'Tres opciones con pago mensual. Todo incluye diseño personalizado, hosting y soporte.',
-'pl.mo':'/mes','pl.pick':'Elegir este paquete','pl.badge':'Más elegido','pl.fine':'Precios mensuales en pesos colombianos (COP).',
-'pl.list':[
- {e:'📄',n:'Informativa',d:'Para que tu negocio tenga una web profesional y se encuentre en internet.',f:['Página web informativa a tu medida','Diseño con tus colores y tu marca','Hosting, dominio y certificado SSL','Copias de seguridad y actualizaciones','Soporte por WhatsApp']},
- {e:'💬',n:'Interactiva',d:'Tu web conversa con tus clientes y conecta directo con tu WhatsApp.',f:['Todo lo del paquete Informativa','Botón de WhatsApp en toda la página','Formularios que envían mensajes a tu WhatsApp','Animaciones e interacción con el cliente','Cambios de contenido incluidos']},
- {e:'🚀',n:'Completa',d:'Todo lo que necesites para vender y crecer, sin límites de funciones.',f:['Todo lo del paquete Interactiva','Reservas, pagos en línea y catálogo','Varios idiomas y funciones a medida','Todo lo que tu negocio necesite','Soporte prioritario']}],
-'qz.h':'¿No sabes cuál elegir?','qz.lead':'Marca lo que necesitas y te recomendamos un paquete.',
-'qz.needs':['Mostrar mi negocio e información','Botón y mensajes por WhatsApp','Reservas o citas en línea','Pagos en línea','Catálogo o tienda','Varios idiomas','Funciones a medida'],
-'qz.none':'Marca lo que necesitas y te mostramos el paquete ideal.','qz.rec':'Te recomendamos el paquete','qz.btn':'Quiero este paquete',
+'pl.tag':'Planes','pl.h':'Planes <span class="grad">desde $30.000</span> al mes','pl.lead':'Tu página web a la medida, con pago mensual. Todo incluye diseño personalizado, hosting y soporte.',
+'pl.mo':'/mes','pl.from':'Planes desde','pl.cta':'Cotizar mi página','pl.fine':'Precios mensuales en pesos colombianos (COP). El valor final depende de lo que necesite tu negocio.','pl.int':'planes desde {p} COP/mes','pl.inc':['Diseño personalizado con tus colores y tu marca','Hosting, dominio y certificado SSL','Copias de seguridad y actualizaciones','Cambios de contenido incluidos','Soporte por WhatsApp'],
 'fq.tag':'Dudas frecuentes','fq.h':'Preguntas <span class="grad">comunes</span>',
-'fq.list':[['¿Por qué dicen que mi página es personalizada?','Porque no partimos de una plantilla genérica. Primero entendemos cómo trabaja tu negocio y, a partir de eso, diseñamos estructura, colores, mensajes y funciones. Prueba el botón «Personaliza» de esta página.'],['¿Cuánto cuesta?','Tenemos tres paquetes mensuales: Informativa por $30.000 pesos, Interactiva por $40.000 pesos y Completa por $50.000 pesos. Cada uno incluye diseño personalizado, hosting y soporte.'],['¿Qué incluye el sostenimiento?','Hosting, dominio, certificado de seguridad, copias de respaldo y actualizaciones técnicas, además de soporte por WhatsApp.'],['¿Cuánto tarda en estar lista?','El primer borrador lo ves en aproximadamente una semana. El tiempo total depende del paquete, pero siempre te damos fechas desde el inicio.'],['¿Puedo cambiar de paquete después?','Sí. Puedes empezar con el Informativo y subir al Interactivo o al Completo cuando tu negocio lo pida.']],
+'fq.list':[['¿Por qué dicen que mi página es personalizada?','Porque no partimos de una plantilla genérica. Primero entendemos cómo trabaja tu negocio y, a partir de eso, diseñamos estructura, colores, mensajes y funciones. Prueba el botón «Personaliza» de esta página.'],['¿Cuánto cuesta?','Nuestros planes arrancan desde $30.000 pesos al mes. Incluyen diseño personalizado, hosting y soporte; el valor final depende de lo que necesite tu negocio y te cotizamos sin compromiso.'],['¿Qué incluye el sostenimiento?','Hosting, dominio, certificado de seguridad, copias de respaldo y actualizaciones técnicas, además de soporte por WhatsApp.'],['¿Cuánto tarda en estar lista?','El primer borrador lo ves en aproximadamente una semana. El tiempo total depende del alcance, pero siempre te damos fechas desde el inicio.'],['¿Puedo añadir funciones más adelante?','Sí. Puedes empezar con lo básico y sumar WhatsApp, reservas o pagos en línea cuando tu negocio lo pida.']],
 'ct.tag':'Hablemos','ct.h':'Cuéntanos de tu negocio y te enviamos <span class="grad">una propuesta</span>','ct.p1':'Cotización sin compromiso','ct.p2':'Respuesta en menos de 24 horas','ct.p3':'Primer borrador en una semana',
-'ct.name':'Tu nombre','ct.biz':'Nombre de tu negocio','ct.msg':'¿Qué te gustaría que hiciera tu página?','ct.send':'Enviar por WhatsApp →','ct.other':'Otro','ct.unsure':'Aún no sé qué paquete','ct.pkg':'Paquete',
+'ct.name':'Tu nombre','ct.biz':'Nombre de tu negocio','ct.msg':'¿Qué te gustaría que hiciera tu página?','ct.send':'Enviar por WhatsApp →','ct.other':'Otro',
 'msg.t':'Hola Sonetix, soy {n}{b} ({tp}). Me interesa: {pk}. {m}','msg.name':'[tu nombre]','msg.def':'Quiero cotizar una página web.',
 'ft.r':'Páginas web a la medida.','ft.m':'Hecho con ♥ para negocios que quieren crecer',
 'pn.t':'Personaliza esta página','pn.s':'Así adaptamos la web de cada cliente a su marca. Prueba y mira cómo cambia en vivo.','pn.col':'Colores','pn.pri':'Principal','pn.sec':'Secundario','pn.rand':'Sorpréndeme','pn.mode':'Modo','pn.dark':'🌙 Oscuro','pn.light':'☀️ Claro','pn.font':'Tipo de letra','pn.size':'Tamaño','pn.shape':'Forma','pn.sq':'Recta','pn.soft':'Suave','pn.round':'Redonda','pn.anim':'Animaciones','pn.on':'Activas','pn.off':'Apagadas','pn.reset':'↺ Restablecer','pn.f':['Moderna','Elegante','Amigable','Técnica'],
-'to.wa':'Abriendo WhatsApp…','to.pk':'Paquete seleccionado','to.reset':'Restablecido','to.cl':'Colores aplicados'
+'to.wa':'Abriendo WhatsApp…','to.reset':'Restablecido','to.cl':'Colores aplicados'
 },
 en:{
 'meta.title':'Sonetix · Custom-made websites','nav.home':'Home','pn.a1':'Soft','pn.a2':'Dynamic','pn.a3':'Off','mq':['Tailor-made design','Your colors','Your brand','Direct WhatsApp','Hosting included','Real support','Great on mobile','4 languages'],
@@ -674,31 +651,24 @@ en:{
 'neg.st':['Colorful & playful','Elegant: black & gold','Minimal: black & white','Clean & trustworthy','Bold & sporty','Editorial & refined'],
 'pr.tag':'How we work','pr.h':'From idea to website <span class="grad">in 4 steps</span>',
 'pr.list':[['We listen','We talk about your business, your customers and your goals.'],['We design','We show you a visual proposal made for you.'],['We build','We develop, test and adjust together with you.'],['We launch and care','We go live and stay on to keep it up to date.']],
-'pl.tag':'Plans','pl.h':'Pick the plan <span class="grad">that fits you</span>','pl.lead':'Three options with monthly billing. Everything includes custom design, hosting and support.',
-'pl.mo':'/mo','pl.pick':'Choose this plan','pl.badge':'Most popular','pl.fine':'Monthly prices in Colombian pesos (COP).',
-'pl.list':[
- {e:'📄',n:'Informative',d:'So your business has a professional website and can be found online.',f:['Informative website tailored to you','Design with your colors and brand','Hosting, domain and SSL certificate','Backups and updates','WhatsApp support']},
- {e:'💬',n:'Interactive',d:'Your site talks to your customers and connects straight to your WhatsApp.',f:['Everything in the Informative plan','WhatsApp button across the site','Forms that send messages to your WhatsApp','Animations and customer interaction','Content changes included']},
- {e:'🚀',n:'Complete',d:'Everything you need to sell and grow, with no limits on features.',f:['Everything in the Interactive plan','Bookings, online payments and catalog','Multiple languages and custom features','Whatever your business needs','Priority support']}],
-'qz.h':'Not sure which to pick?','qz.lead':'Tick what you need and we’ll recommend a plan.',
-'qz.needs':['Showcase my business and info','WhatsApp button and messages','Online bookings or appointments','Online payments','Catalog or store','Multiple languages','Custom features'],
-'qz.none':'Tick what you need and we’ll show you the ideal plan.','qz.rec':'We recommend the plan','qz.btn':'I want this plan',
+'pl.tag':'Plans','pl.h':'Plans <span class="grad">from $30,000</span> a month','pl.lead':'Your custom website, with monthly billing. Everything includes custom design, hosting and support.',
+'pl.mo':'/mo','pl.from':'Plans from','pl.cta':'Get a quote','pl.fine':'Monthly prices in Colombian pesos (COP). The final price depends on what your business needs.','pl.int':'plans from {p} COP/mo','pl.inc':['Custom design with your colors and brand','Hosting, domain and SSL certificate','Backups and updates','Content changes included','Support via WhatsApp'],
 'fq.tag':'FAQ','fq.h':'Common <span class="grad">questions</span>',
-'fq.list':[['Why do you say my site is custom-made?','Because we don’t start from a generic template. We first understand how your business works and then design structure, colors, messages and features around it. Try the “Customize” button on this page.'],['How much does it cost?','We have three monthly plans: Informative for COP 30,000, Interactive for COP 40,000 and Complete for COP 50,000 (Colombian pesos). Each includes custom design, hosting and support.'],['What does maintenance include?','Hosting, domain, security certificate, backups and technical updates, plus WhatsApp support.'],['How long until it’s ready?','You’ll see a first draft in about a week. Total time depends on the plan, but we always give you dates from the start.'],['Can I switch plans later?','Yes. Start with Informative and move up to Interactive or Complete whenever your business needs it.']],
+'fq.list':[['Why do you say my site is custom-made?','Because we don’t start from a generic template. We first understand how your business works and then design structure, colors, messages and features around it. Try the “Customize” button on this page.'],['How much does it cost?','Our plans start from COP 30,000 a month (Colombian pesos). They include custom design, hosting and support; the final price depends on what your business needs, and quotes are free and no-obligation.'],['What does maintenance include?','Hosting, domain, security certificate, backups and technical updates, plus WhatsApp support.'],['How long until it’s ready?','You’ll see a first draft in about a week. Total time depends on the plan, but we always give you dates from the start.'],['Can I add features later?','Yes. Start with the basics and add WhatsApp, bookings or online payments whenever your business needs them.']],
 'ct.tag':'Let’s talk','ct.h':'Tell us about your business and we’ll send <span class="grad">a proposal</span>','ct.p1':'No-obligation quote','ct.p2':'Reply within 24 hours','ct.p3':'First draft in a week',
-'ct.name':'Your name','ct.biz':'Your business name','ct.msg':'What would you like your site to do?','ct.send':'Send via WhatsApp →','ct.other':'Other','ct.unsure':'Not sure which plan yet','ct.pkg':'Plan',
+'ct.name':'Your name','ct.biz':'Your business name','ct.msg':'What would you like your site to do?','ct.send':'Send via WhatsApp →','ct.other':'Other',
 'msg.t':'Hi Sonetix, I’m {n}{b} ({tp}). I’m interested in: {pk}. {m}','msg.name':'[your name]','msg.def':'I’d like a quote for a website.',
 'ft.r':'Custom-made websites.','ft.m':'Made with ♥ for businesses that want to grow',
 'pn.t':'Customize this page','pn.s':'This is how we adapt each client’s site to their brand. Try it and watch it change live.','pn.col':'Colors','pn.pri':'Primary','pn.sec':'Secondary','pn.rand':'Surprise me','pn.mode':'Mode','pn.dark':'🌙 Dark','pn.light':'☀️ Light','pn.font':'Typeface','pn.size':'Size','pn.shape':'Shape','pn.sq':'Sharp','pn.soft':'Soft','pn.round':'Round','pn.anim':'Animations','pn.on':'On','pn.off':'Off','pn.reset':'↺ Reset','pn.f':['Modern','Elegant','Friendly','Technical'],
-'to.wa':'Opening WhatsApp…','to.pk':'Plan selected','to.reset':'Reset done','to.cl':'Colors applied'
+'to.wa':'Opening WhatsApp…','to.reset':'Reset done','to.cl':'Colors applied'
 },
 pt:{
 'meta.title':'Sonetix · Sites sob medida','nav.home':'Início','pn.a1':'Suaves','pn.a2':'Dinâmicas','pn.a3':'Desligadas','mq':['Design sob medida','Suas cores','Sua marca','WhatsApp direto','Hospedagem incluída','Suporte de verdade','Ótimo no celular','4 idiomas'],
-'nav.serv':'Serviços','nav.demo':'Experimente','nav.proc':'Processo','nav.plans':'Pacotes','nav.faq':'Perguntas','nav.cta':'Orçamento','nav.pers':'Personalize',
+'nav.serv':'Serviços','nav.demo':'Experimente','nav.proc':'Processo','nav.plans':'Planos','nav.faq':'Perguntas','nav.cta':'Orçamento','nav.pers':'Personalize',
 'hero.pill':'Vagas abertas este mês','hero.h1a':'Sites feitos','hero.h1b':'sob medida para sua',
 'hero.words':['sorveteria','restaurante','loja','clínica','empresa'],
 'hero.lead':'Nada de modelos genéricos. Desenhamos seu site conforme o jeito que seu negócio funciona e o mantemos vivo: hospedagem, alterações, segurança e suporte incluídos.',
-'hero.c1':'Ver pacotes →','hero.c2':'▶ Ver como se adapta',
+'hero.c1':'Ver planos →','hero.c2':'▶ Ver como se adapta',
 'st.1':'Design personalizado','st.2':'Primeiro rascunho pronto','st.3':'Meta de disponibilidade','st.4':'Resposta a alterações','u.d':' dias','u.h':' h',
 'sv.tag':'O que fazemos','sv.h':'Criamos <span class="grad">e cuidamos</span> da sua presença online','sv.lead':'Um site não termina no dia em que é publicado. Acompanhamos você antes, durante e depois do lançamento.',
 'sv.list':[['🎨','Design 100% personalizado','Sua identidade, suas cores, seu jeito de vender. Experimente o botão «Personalize»: assim adaptamos o site a cada cliente.'],['⚙️','Adaptado à sua operação','Reservas, catálogo, pagamentos, formulários ou WhatsApp. Integramos só o que seu negócio precisa, sem enrolação.'],['📱','Rápido e em qualquer tela','Fica ótimo no celular, tablet e computador. Otimizado para carregar rápido e aparecer no Google.'],['🛡️','Manutenção mensal','Hospedagem, domínio, certificado SSL, backups e atualizações. Você foca em vender, nós em manter tudo no ar.'],['✏️','Alterações quando precisar','Novo preço, nova promoção, nova seção. Peça e publicamos, sem você aprender código.'],['📈','Pensado para gerar clientes','Chamadas claras para ação e melhorias contínuas para que seu site venda e não seja só um cartão de visita.']],
@@ -716,23 +686,16 @@ pt:{
 'neg.st':['Colorida e animada','Elegante: preto e dourado','Minimalista: preto e branco','Limpa e confiável','Enérgica e esportiva','Editorial e sóbria'],
 'pr.tag':'Como trabalhamos','pr.h':'Da ideia ao seu site <span class="grad">em 4 passos</span>',
 'pr.list':[['Ouvimos você','Conversamos sobre seu negócio, seus clientes e suas metas.'],['Desenhamos','Mostramos uma proposta visual feita para você.'],['Construímos','Desenvolvemos, testamos e ajustamos com você.'],['Publicamos e cuidamos','Lançamos e ficamos para mantê-lo sempre atualizado.']],
-'pl.tag':'Pacotes','pl.h':'Escolha o pacote <span class="grad">que combina com você</span>','pl.lead':'Três opções com pagamento mensal. Tudo inclui design personalizado, hospedagem e suporte.',
-'pl.mo':'/mês','pl.pick':'Escolher este pacote','pl.badge':'Mais escolhido','pl.fine':'Preços mensais em pesos colombianos (COP).',
-'pl.list':[
- {e:'📄',n:'Informativo',d:'Para que seu negócio tenha um site profissional e seja encontrado na internet.',f:['Site informativo sob medida','Design com suas cores e sua marca','Hospedagem, domínio e certificado SSL','Backups e atualizações','Suporte por WhatsApp']},
- {e:'💬',n:'Interativo',d:'Seu site conversa com seus clientes e conecta direto ao seu WhatsApp.',f:['Tudo do pacote Informativo','Botão de WhatsApp em todo o site','Formulários que enviam mensagens ao seu WhatsApp','Animações e interação com o cliente','Alterações de conteúdo incluídas']},
- {e:'🚀',n:'Completo',d:'Tudo o que você precisa para vender e crescer, sem limite de funções.',f:['Tudo do pacote Interativo','Reservas, pagamentos online e catálogo','Vários idiomas e funções sob medida','Tudo o que seu negócio precisar','Suporte prioritário']}],
-'qz.h':'Não sabe qual escolher?','qz.lead':'Marque o que você precisa e recomendamos um pacote.',
-'qz.needs':['Mostrar meu negócio e informações','Botão e mensagens por WhatsApp','Reservas ou consultas online','Pagamentos online','Catálogo ou loja','Vários idiomas','Funções sob medida'],
-'qz.none':'Marque o que você precisa e mostramos o pacote ideal.','qz.rec':'Recomendamos o pacote','qz.btn':'Quero este pacote',
+'pl.tag':'Planos','pl.h':'Planos <span class="grad">a partir de $30.000</span> por mês','pl.lead':'Seu site sob medida, com pagamento mensal. Tudo inclui design personalizado, hospedagem e suporte.',
+'pl.mo':'/mês','pl.from':'Planos a partir de','pl.cta':'Pedir orçamento','pl.fine':'Preços mensais em pesos colombianos (COP). O valor final depende do que seu negócio precisa.','pl.int':'planos a partir de {p} COP/mês','pl.inc':['Design personalizado com suas cores e sua marca','Hospedagem, domínio e certificado SSL','Backups e atualizações','Alterações de conteúdo incluídas','Suporte pelo WhatsApp'],
 'fq.tag':'Dúvidas frequentes','fq.h':'Perguntas <span class="grad">comuns</span>',
-'fq.list':[['Por que dizem que meu site é personalizado?','Porque não partimos de um modelo genérico. Primeiro entendemos como seu negócio funciona e, a partir disso, desenhamos estrutura, cores, mensagens e funções. Experimente o botão «Personalize» desta página.'],['Quanto custa?','Temos três pacotes mensais: Informativo por 30.000 pesos colombianos (COP), Interativo por 40.000 e Completo por 50.000. Todos incluem design personalizado, hospedagem e suporte.'],['O que inclui a manutenção?','Hospedagem, domínio, certificado de segurança, backups e atualizações técnicas, além de suporte por WhatsApp.'],['Quanto tempo leva para ficar pronto?','O primeiro rascunho sai em cerca de uma semana. O prazo total depende do pacote, mas sempre damos datas desde o início.'],['Posso trocar de pacote depois?','Sim. Comece com o Informativo e suba para o Interativo ou o Completo quando seu negócio precisar.']],
+'fq.list':[['Por que dizem que meu site é personalizado?','Porque não partimos de um modelo genérico. Primeiro entendemos como seu negócio funciona e, a partir disso, desenhamos estrutura, cores, mensagens e funções. Experimente o botão «Personalize» desta página.'],['Quanto custa?','Nossos planos começam a partir de 30.000 pesos colombianos (COP) por mês. Incluem design personalizado, hospedagem e suporte; o valor final depende do que seu negócio precisa e o orçamento é sem compromisso.'],['O que inclui a manutenção?','Hospedagem, domínio, certificado de segurança, backups e atualizações técnicas, além de suporte por WhatsApp.'],['Quanto tempo leva para ficar pronto?','O primeiro rascunho sai em cerca de uma semana. O prazo total depende do escopo, mas sempre damos datas desde o início.'],['Posso adicionar recursos depois?','Sim. Comece com o básico e adicione WhatsApp, reservas ou pagamentos online quando seu negócio precisar.']],
 'ct.tag':'Vamos conversar','ct.h':'Conte sobre seu negócio e enviamos <span class="grad">uma proposta</span>','ct.p1':'Orçamento sem compromisso','ct.p2':'Resposta em menos de 24 horas','ct.p3':'Primeiro rascunho em uma semana',
-'ct.name':'Seu nome','ct.biz':'Nome do seu negócio','ct.msg':'O que você gostaria que seu site fizesse?','ct.send':'Enviar pelo WhatsApp →','ct.other':'Outro','ct.unsure':'Ainda não sei qual pacote','ct.pkg':'Pacote',
+'ct.name':'Seu nome','ct.biz':'Nome do seu negócio','ct.msg':'O que você gostaria que seu site fizesse?','ct.send':'Enviar pelo WhatsApp →','ct.other':'Outro',
 'msg.t':'Olá Sonetix, sou {n}{b} ({tp}). Tenho interesse em: {pk}. {m}','msg.name':'[seu nome]','msg.def':'Quero um orçamento para um site.',
 'ft.r':'Sites sob medida.','ft.m':'Feito com ♥ para negócios que querem crescer',
 'pn.t':'Personalize esta página','pn.s':'Assim adaptamos o site de cada cliente à sua marca. Teste e veja mudar ao vivo.','pn.col':'Cores','pn.pri':'Principal','pn.sec':'Secundária','pn.rand':'Surpreenda-me','pn.mode':'Modo','pn.dark':'🌙 Escuro','pn.light':'☀️ Claro','pn.font':'Tipo de letra','pn.size':'Tamanho','pn.shape':'Forma','pn.sq':'Reta','pn.soft':'Suave','pn.round':'Redonda','pn.anim':'Animações','pn.on':'Ativas','pn.off':'Desligadas','pn.reset':'↺ Restaurar','pn.f':['Moderna','Elegante','Amigável','Técnica'],
-'to.wa':'Abrindo o WhatsApp…','to.pk':'Pacote selecionado','to.reset':'Restaurado','to.cl':'Cores aplicadas'
+'to.wa':'Abrindo o WhatsApp…','to.reset':'Restaurado','to.cl':'Cores aplicadas'
 },
 fr:{
 'meta.title':'Sonetix · Sites web sur mesure','nav.home':'Accueil','pn.a1':'Douces','pn.a2':'Dynamiques','pn.a3':'Désactivées','mq':['Design sur mesure','Vos couleurs','Votre marque','WhatsApp direct','Hébergement inclus','Vraie assistance','Parfait sur mobile','4 langues'],
@@ -758,30 +721,23 @@ fr:{
 'neg.st':['Colorée et animée','Élégant : noir et or','Minimaliste : noir et blanc','Épurée et fiable','Dynamique et sportive','Éditorial et sobre'],
 'pr.tag':'Notre méthode','pr.h':'De l’idée à votre site <span class="grad">en 4 étapes</span>',
 'pr.list':[['Nous vous écoutons','Nous parlons de votre activité, de vos clients et de vos objectifs.'],['Nous concevons','Nous vous présentons une proposition visuelle faite pour vous.'],['Nous construisons','Nous développons, testons et ajustons avec vous.'],['Nous publions et entretenons','Nous lançons et restons pour le garder à jour.']],
-'pl.tag':'Formules','pl.h':'Choisissez la formule <span class="grad">qui vous convient</span>','pl.lead':'Trois options avec paiement mensuel. Toutes incluent design personnalisé, hébergement et assistance.',
-'pl.mo':'/mois','pl.pick':'Choisir cette formule','pl.badge':'La plus choisie','pl.fine':'Prix mensuels en pesos colombiens (COP).',
-'pl.list':[
- {e:'📄',n:'Informative',d:'Pour que votre activité ait un site professionnel et soit visible sur internet.',f:['Site informatif sur mesure','Design à vos couleurs et à votre image','Hébergement, domaine et certificat SSL','Sauvegardes et mises à jour','Assistance par WhatsApp']},
- {e:'💬',n:'Interactive',d:'Votre site dialogue avec vos clients et se connecte directement à votre WhatsApp.',f:['Tout ce qu’inclut la formule Informative','Bouton WhatsApp sur tout le site','Formulaires qui envoient des messages à votre WhatsApp','Animations et interaction avec le client','Modifications de contenu incluses']},
- {e:'🚀',n:'Complète',d:'Tout ce qu’il faut pour vendre et grandir, sans limite de fonctionnalités.',f:['Tout ce qu’inclut la formule Interactive','Réservations, paiements en ligne et catalogue','Plusieurs langues et fonctions sur mesure','Tout ce dont votre activité a besoin','Assistance prioritaire']}],
-'qz.h':'Vous hésitez ?','qz.lead':'Cochez ce dont vous avez besoin et nous vous recommandons une formule.',
-'qz.needs':['Présenter mon activité et mes infos','Bouton et messages WhatsApp','Réservations ou rendez-vous en ligne','Paiements en ligne','Catalogue ou boutique','Plusieurs langues','Fonctions sur mesure'],
-'qz.none':'Cochez ce dont vous avez besoin et nous vous montrons la formule idéale.','qz.rec':'Nous vous recommandons la formule','qz.btn':'Je veux cette formule',
+'pl.tag':'Formules','pl.h':'Formules <span class="grad">à partir de 30 000</span> par mois','pl.lead':'Votre site sur mesure, avec paiement mensuel. Tout inclut design personnalisé, hébergement et assistance.',
+'pl.mo':'/mois','pl.from':'Formules à partir de','pl.cta':'Demander un devis','pl.fine':'Prix mensuels en pesos colombiens (COP). Le prix final dépend des besoins de votre activité.','pl.int':'formules à partir de {p} COP/mois','pl.inc':['Design personnalisé à vos couleurs et à votre marque','Hébergement, domaine et certificat SSL','Sauvegardes et mises à jour','Modifications de contenu incluses','Assistance par WhatsApp'],
 'fq.tag':'Questions fréquentes','fq.h':'Questions <span class="grad">courantes</span>',
-'fq.list':[['Pourquoi dites-vous que mon site est personnalisé ?','Parce que nous ne partons pas d’un modèle générique. Nous comprenons d’abord le fonctionnement de votre activité, puis nous concevons structure, couleurs, messages et fonctions. Essayez le bouton « Personnalisez » de cette page.'],['Combien ça coûte ?','Nous proposons trois formules mensuelles : Informative à 30 000 COP, Interactive à 40 000 COP et Complète à 50 000 COP (pesos colombiens). Chacune inclut design personnalisé, hébergement et assistance.'],['Que comprend la maintenance ?','Hébergement, domaine, certificat de sécurité, sauvegardes et mises à jour techniques, ainsi que l’assistance par WhatsApp.'],['Combien de temps avant qu’il soit prêt ?','Vous voyez une première maquette en environ une semaine. Le délai total dépend de la formule, mais nous donnons toujours des dates dès le départ.'],['Puis-je changer de formule plus tard ?','Oui. Commencez par l’Informative et passez à l’Interactive ou à la Complète quand votre activité le demande.']],
+'fq.list':[['Pourquoi dites-vous que mon site est personnalisé ?','Parce que nous ne partons pas d’un modèle générique. Nous comprenons d’abord le fonctionnement de votre activité, puis nous concevons structure, couleurs, messages et fonctions. Essayez le bouton « Personnalisez » de cette page.'],['Combien ça coûte ?','Nos formules démarrent à partir de 30 000 COP par mois (pesos colombiens). Elles incluent design personnalisé, hébergement et assistance ; le prix final dépend des besoins de votre activité, et le devis est sans engagement.'],['Que comprend la maintenance ?','Hébergement, domaine, certificat de sécurité, sauvegardes et mises à jour techniques, ainsi que l’assistance par WhatsApp.'],['Combien de temps avant qu’il soit prêt ?','Vous voyez une première maquette en environ une semaine. Le délai total dépend de la formule, mais nous donnons toujours des dates dès le départ.'],['Puis-je ajouter des fonctions plus tard ?','Oui. Commencez par l’essentiel et ajoutez WhatsApp, réservations ou paiements en ligne quand votre activité le demande.']],
 'ct.tag':'Parlons-en','ct.h':'Parlez-nous de votre activité et nous vous envoyons <span class="grad">une proposition</span>','ct.p1':'Devis sans engagement','ct.p2':'Réponse sous 24 heures','ct.p3':'Première maquette en une semaine',
-'ct.name':'Votre nom','ct.biz':'Nom de votre entreprise','ct.msg':'Que souhaitez-vous que votre site fasse ?','ct.send':'Envoyer via WhatsApp →','ct.other':'Autre','ct.unsure':'Je ne sais pas encore','ct.pkg':'Formule',
+'ct.name':'Votre nom','ct.biz':'Nom de votre entreprise','ct.msg':'Que souhaitez-vous que votre site fasse ?','ct.send':'Envoyer via WhatsApp →','ct.other':'Autre',
 'msg.t':'Bonjour Sonetix, je suis {n}{b} ({tp}). Je suis intéressé(e) par : {pk}. {m}','msg.name':'[votre nom]','msg.def':'Je souhaite un devis pour un site web.',
 'ft.r':'Sites web sur mesure.','ft.m':'Fait avec ♥ pour les entreprises qui veulent grandir',
 'pn.t':'Personnalisez cette page','pn.s':'C’est ainsi que nous adaptons le site de chaque client à sa marque. Essayez et voyez le changement en direct.','pn.col':'Couleurs','pn.pri':'Principale','pn.sec':'Secondaire','pn.rand':'Surprenez-moi','pn.mode':'Mode','pn.dark':'🌙 Sombre','pn.light':'☀️ Clair','pn.font':'Police','pn.size':'Taille','pn.shape':'Forme','pn.sq':'Droite','pn.soft':'Douce','pn.round':'Ronde','pn.anim':'Animations','pn.on':'Activées','pn.off':'Désactivées','pn.reset':'↺ Réinitialiser','pn.f':['Moderne','Élégante','Amicale','Technique'],
-'to.wa':'Ouverture de WhatsApp…','to.pk':'Formule sélectionnée','to.reset':'Réinitialisé','to.cl':'Couleurs appliquées'
+'to.wa':'Ouverture de WhatsApp…','to.reset':'Réinitialisé','to.cl':'Couleurs appliquées'
 }
 };
 /* ========================================================== */
 
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const root=document.documentElement;
-const fmtP=i=>'$'+String(CONFIG.precios[i]).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const fmtP=()=>'$'+String(CONFIG.precioDesde).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let LANG='es';
 const t=k=>(T[LANG]&&T[LANG][k]!==undefined)?T[LANG][k]:T.es[k];
@@ -826,7 +782,7 @@ function setIdioma(l,guardar){
   $$('[data-t]').forEach(e=>e.innerHTML=t(e.dataset.t));
   $$('[data-tp]').forEach(e=>e.placeholder=t(e.dataset.tp));
   $$('[data-brand]').forEach(e=>e.textContent=CONFIG.marca);
-  renderSvcs();renderSteps();renderPlans();renderFaq();renderNeeds();renderRes();renderDemoOpts();renderSelects();paintDemo(false);chat();renderMq();window.paintDots&&paintDots();
+  renderSvcs();renderSteps();renderPlans();renderFaq();renderDemoOpts();renderSelects();paintDemo(false);chat();renderMq();window.paintDots&&paintDots();
   $$('[data-n]').forEach(n=>{if(n.closest('.rv.in'))setCount(n,+n.dataset.n)});
   renderFontsPanel();renderTyped(true);
   if(guardar)save();
@@ -836,32 +792,20 @@ function setCount(n,v){const u=n.dataset.u;const unit=u&&u.startsWith('u.')?t(u)
 /* ---------- render dinámico ---------- */
 function renderSvcs(){$('#svcs').innerHTML=t('sv.list').map((s,i)=>`<div class="card si" style="--i:${i}"><div class="ico">${s[0]}</div><h3>${s[1]}</h3><p>${s[2]}</p></div>`).join('');bindTilt()}
 function renderSteps(){$('#steps').innerHTML=t('pr.list').map((s,i)=>`<div class="step si" style="--i:${i}"><div class="num">${i+1}</div><h3>${s[0]}</h3><p>${s[1]}</p></div>`).join('');onScroll()}
-let REC=-1;
 function renderPlans(){
-  $('#plans').innerHTML=t('pl.list').map((p,i)=>`<div class="plan si ${i===1?'hot':''} ${REC===i?'rec':''}" style="--i:${i}" data-i="${i}">${i===1?`<div class="badge">${t('pl.badge')}</div>`:''}
-   <div class="pe">${p.e}</div><h3>${p.n}</h3><div class="d">${p.d}</div>
-   <div class="price">${fmtP(i)}<small> ${CONFIG.moneda}${t('pl.mo')}</small></div>
-   <ul>${p.f.map(x=>`<li>${x}</li>`).join('')}</ul>
-   <button class="btn ${i===1?'p':'g'}" data-pick="${i}">${t('pl.pick')}</button></div>`).join('');
+  $('#plans').innerHTML=`<div class="plan hot si" style="--i:0"><div class="d">${t('pl.from')}</div>
+   <div class="price">${fmtP()}<small> ${CONFIG.moneda}${t('pl.mo')}</small></div>
+   <ul>${t('pl.inc').map(x=>`<li>${x}</li>`).join('')}</ul>
+   <button class="btn p" data-go>${t('pl.cta')}</button></div>`;
 }
 function renderFaq(){const l=$('#faq-list');l.innerHTML=t('fq.list').map((f,i)=>`<div class="qa si" style="--i:${i}"><button>${f[0]}<span>+</span></button><div>${f[1]}</div></div>`).join('');
   $$('.qa',l).forEach(q=>q.firstElementChild.onclick=()=>{const on=q.classList.contains('on');
     $$('.qa',l).forEach(x=>{x.classList.remove('on');x.lastElementChild.style.maxHeight=0});
     if(!on){q.classList.add('on');q.lastElementChild.style.maxHeight=q.lastElementChild.scrollHeight+30+'px'}})}
-const TIER=[0,1,2,2,2,2,2];const NEEDS=new Set();
-function renderNeeds(){$('#needs').innerHTML=t('qz.needs').map((n,i)=>`<label class="need si ${NEEDS.has(i)?'on':''}" style="--i:${i}" data-i="${i}"><input type="checkbox" ${NEEDS.has(i)?'checked':''}><i>${NEEDS.has(i)?'✓':''}</i>${n}</label>`).join('')}
-function renderRes(){
-  const box=$('#res');
-  if(!NEEDS.size){REC=-1;box.innerHTML=`<div style="font-size:3rem">🤔</div><p>${t('qz.none')}</p>`}
-  else{REC=Math.max(...[...NEEDS].map(i=>TIER[i]));const p=t('pl.list')[REC];
-    box.innerHTML=`<div style="font-size:3rem">${p.e}</div><p>${t('qz.rec')}</p><div class="big grad">${p.n}</div><p><b style="color:var(--txt)">${fmtP(REC)} ${CONFIG.moneda}</b> ${t('pl.mo')}</p><button class="btn p" data-pick="${REC}">${t('qz.btn')}</button>`}
-  $$('#plans .plan').forEach((c,i)=>c.classList.toggle('rec',i===REC));
-}
 function renderSelects(){
-  const tp=$('#f-t'),pk=$('#f-p'),a=tp.selectedIndex,b=pk.selectedIndex;
+  const tp=$('#f-t'),a=tp.selectedIndex;
   tp.innerHTML=t('neg').map(n=>`<option>${n.k}</option>`).join('')+`<option>${t('ct.other')}</option>`;
-  pk.innerHTML=t('pl.list').map((p,i)=>`<option value="${i}">${t('ct.pkg')} ${p.n} · ${fmtP(i)} ${CONFIG.moneda}${t('pl.mo')}</option>`).join('')+`<option value="-1">${t('ct.unsure')}</option>`;
-  tp.selectedIndex=a<0?0:a;pk.selectedIndex=b<0?1:b;
+  tp.selectedIndex=a<0?0:a;
 }
 function renderMq(){const L=t('mq').concat(t('mq')).map(x=>`<span>${x}</span>`).join('');$('#mq').innerHTML=L+L}
 function renderFontsPanel(){const nm=t('pn.f');$('#fonts').innerHTML=FKEYS.map((k,i)=>`<button data-v="${k}" aria-pressed="${S.fuente===k}"><b style="font-family:${FONTS[k][0]}">Aa</b><small>${nm[i]}</small></button>`).join('')}
@@ -894,7 +838,7 @@ function goNeg(i,anim){curNeg=i;demoAcc=null;paintDemo(anim)}
 /* ---------- chat WhatsApp en vivo ---------- */
 function msg(){
   const n=$('#f-n').value.trim(),b=$('#f-b').value.trim(),tp=$('#f-t').value;
-  const pi=+$('#f-p').value,pk=pi>=0?`${t('ct.pkg')} ${t('pl.list')[pi].n} (${fmtP(pi)} ${CONFIG.moneda}${t('pl.mo')})`:t('ct.unsure');
+  const pk=t('pl.int').replace('{p}',fmtP());
   return t('msg.t').replace('{n}',n||t('msg.name')).replace('{b}',b?` · "${b}"`:'').replace('{tp}',tp).replace('{pk}',pk).replace('{m}',$('#f-m').value.trim()||t('msg.def'));
 }
 function chat(){const h=new Date().toLocaleTimeString(LANG,{hour:'2-digit',minute:'2-digit'});
@@ -944,10 +888,8 @@ $('#site').addEventListener('click',e=>{
 });
 $('#dname').oninput=()=>{clearInterval(autoDemo);paintDemo(false)};
 let autoDemo=setInterval(()=>{if(!demoPaused)goNeg((curNeg+1)%t('neg').length,true)},5200);
-$('#needs').onclick=e=>{const l=e.target.closest('.need');if(!l)return;e.preventDefault();const i=+l.dataset.i;NEEDS.has(i)?NEEDS.delete(i):NEEDS.add(i);const on=NEEDS.has(i);l.classList.toggle('on',on);l.querySelector('i').textContent=on?'✓':'';renderRes()};
-document.addEventListener('click',e=>{const b=e.target.closest('[data-pick]');if(!b)return;const i=+b.dataset.pick;
-  $('#f-p').value=i;chat();toast(t('to.pk')+': '+t('pl.list')[i].n);$('#contacto').scrollIntoView({behavior:'smooth'})});
-['f-n','f-b','f-t','f-p','f-m'].forEach(id=>$('#'+id).addEventListener('input',chat));
+document.addEventListener('click',e=>{if(!e.target.closest('[data-go]'))return;$('#contacto').scrollIntoView({behavior:'smooth'})});
+['f-n','f-b','f-t','f-m'].forEach(id=>$('#'+id).addEventListener('input',chat));
 $('#form').onsubmit=e=>{e.preventDefault();open('https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent(msg()),'_blank');toast(t('to.wa'))};
 $('#wa').href='https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent('Hola Sonetix / Hi Sonetix');
 $('#yr').textContent=new Date().getFullYear();
